@@ -16,7 +16,7 @@ ENT.Base = "fighter_base"
 
 ENT.PrintName = "Delta-7"
 ENT.Author = "Liam0102"
-ENT.Category = "Star Wars Vehicles: Republic"
+ENT.Category = "Star Wars Vehicles: Republic"; -- Techincally you could change this, but personally I'd leave it so they're all in the same place (Looks more proffesional).
 ENT.AutomaticFrameAdvance = true
 ENT.Spawnable = false;
 ENT.AdminOnly = false;
