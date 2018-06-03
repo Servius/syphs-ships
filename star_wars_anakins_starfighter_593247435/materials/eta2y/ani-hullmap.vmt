@@ -1,0 +1,20 @@
+"VertexLitGeneric"
+
+// Anakins Jedi Starfighter
+// made by Manquesa 
+
+// material edited by Lord Trilobite
+{
+	"$baseTexture"		"eta2y/ani-hullmap"
+	"$bumpmap"		"eta2y/ani-hullmap_norm"
+
+	"$Phong"		"1"
+	"$PhongBoost"		"3.2"
+	"$phongexponent"	"39.8"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+
+	"$detail" 		"detail\metal_detail_01"
+	"$detailscale" 		"5"
+	"$detailblendfactor" 	"1.55"
+	"$detailblendmode" 	"0"
+}

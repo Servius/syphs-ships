@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/kandosii/Kandosii"
+	"$bumpmap" "starwars/syphadias/ships/kandosii/Kandosii_B"
+}

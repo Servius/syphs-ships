@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/syphadias/gozanti/Gozanti"
+	"$bumpmap" "models/syphadias/gozanti/gozanti_B"
+}

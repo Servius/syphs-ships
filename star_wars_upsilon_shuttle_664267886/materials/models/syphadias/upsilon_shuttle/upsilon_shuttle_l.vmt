@@ -1,0 +1,10 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/syphadias/upsilon_shuttle/Upsilon_Shuttle_L"
+	"$selfillum"		"1"
+   	"$selfillummask"	"models/syphadias/upsilon_shuttle/Upsilon_Shuttle_L_spec"
+	"$Phong"		"1"
+	"$PhongBoost"		"1.2"
+	"$phongexponent"	"39.8"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+}

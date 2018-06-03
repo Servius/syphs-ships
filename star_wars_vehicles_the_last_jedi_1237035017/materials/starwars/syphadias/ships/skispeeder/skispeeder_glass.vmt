@@ -1,0 +1,11 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/skispeeder/skispeeder_glass"
+	
+	//"$envmap"		"env_cubemap"
+	//"$envmaptint"		"[0.6 0.7 0.7]"
+	//"$refractamount"	".08" 
+	//"$envmapsaturation"	".5"
+	
+	"$translucent" 1
+}

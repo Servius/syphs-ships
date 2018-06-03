@@ -1,0 +1,21 @@
+"VertexlitGeneric"
+
+//Reys Speeder
+//model made by Olof Moleman AKA Lord Trilobite
+//ported to Source by Syphadias
+{
+	"$basetexture"			"starwars/lordtrilobite/ships/reys_speeder/reys_speeder_misc"
+	"$bumpmap"			"starwars/lordtrilobite/ships/reys_speeder/reys_speeder_misc_NRM"
+	"$halflambert"			"1"
+
+	"$Phong"			"1"
+	"$PhongBoost"			"0.6"
+	"$phongexponent"		"2.8"
+	"$PhongFresnelRanges"		"[.05 .5 1]"
+
+
+	"$detail"			"detail\metal_detail_01"
+	"$detailscale"			"9.283"
+	"$detailblendfactor"		"0.98"
+	"$detailblendmode"		"0"
+}

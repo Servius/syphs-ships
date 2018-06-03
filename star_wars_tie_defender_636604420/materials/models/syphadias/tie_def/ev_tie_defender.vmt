@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/syphadias/tie_def/EV_TIE_DEFENDER"
+	"$bumpmap" "models/syphadias/tie_def/EV_TIE_DEFENDER_bump"
+}

@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "tie7/TEX00011"
+	"$nocull"	"1"
+}

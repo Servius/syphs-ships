@@ -1,0 +1,16 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/skispeeder/skispeeder_hull"
+	"$bumpmap" "starwars/syphadias/ships/skispeeder/skispeeder_hull_n"
+	"$detail" "starwars/syphadias/ships/skispeeder/skispeeder_hull_d"
+	"$detailscale" 		"1"
+	"$detailblendfactor" 	"0.81"
+	"$detailblendmode" 	"0"
+	
+	"$Phong"		"1"
+	"$PhongBoost"		"1.7"
+	"$phongexponent"	"7.3"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+	
+	"$nocull" "1"
+}

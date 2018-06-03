@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/starviper/Nv_starviper"
+	"$bumpmap" "starwars/syphadias/ships/starviper/Nv_starviper_bump"
+}

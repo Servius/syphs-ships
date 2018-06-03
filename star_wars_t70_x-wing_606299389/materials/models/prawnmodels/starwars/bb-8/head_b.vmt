@@ -1,0 +1,5 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "models/PrawnModels/StarWars/BB-8/head_B"
+	"$translucent" 1
+}

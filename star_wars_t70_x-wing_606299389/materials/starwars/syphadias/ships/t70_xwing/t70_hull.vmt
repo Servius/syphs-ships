@@ -1,0 +1,15 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/t70_xwing/t70_hull"
+	"$bumpmap" "starwars/syphadias/ships/t70_xwing/t70_hull_n"
+	
+	"$selfillum"		"1"
+   	"$selfillummask"	"starwars/syphadias/ships/t70_xwing/t70_hull_s"
+	
+	"$Phong"		"1"
+	"$PhongBoost"		"1.7"
+	"$phongexponent"	"7.3"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+	
+	//"$nocull" "1"
+}

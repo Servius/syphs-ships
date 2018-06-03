@@ -1,0 +1,22 @@
+"VertexlitGeneric"
+
+//Krennics Shuttle
+//model made by Olof Moleman AKA Lord Trilobite
+//ported to Source by Syphadias
+{
+	"$basetexture"			"starwars/lordtrilobite/ships/krennic_shuttle/krennic_shuttle_wings"
+	"$bumpmap"			"starwars/lordtrilobite/ships/krennic_shuttle/krennic_shuttle_wings_NRM"
+
+	"$normalmapalphaenvmapmask"	"1"
+
+	"$Phong"			"1"
+	"$PhongBoost"			"1.5"
+	"$phongexponent"		"25.8"
+	"$PhongFresnelRanges"		"[.05 .5 1]"
+
+
+	"$detail"			"detail\metal_detail_01"
+	"$detailscale"			"8.283"
+	"$detailblendfactor"		"0.5"
+	"$detailblendmode"		"0"
+}

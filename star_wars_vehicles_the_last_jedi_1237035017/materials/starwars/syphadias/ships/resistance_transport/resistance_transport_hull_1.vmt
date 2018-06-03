@@ -1,0 +1,14 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/resistance_transport/resistance_transport_hull_1"
+	"$bumpmap" "starwars/syphadias/ships/resistance_transport/resistance_transport_hull_1_n"
+	"$detail" "starwars/syphadias/ships/resistance_transport/resistance_transport_hull_1_d"
+	"$detailscale" 		"1"
+	"$detailblendfactor" 	"0.81"
+	"$detailblendmode" 	"0"
+	
+	"$Phong"		"1"
+	"$PhongBoost"		"1.7"
+	"$phongexponent"	"7.3"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+}

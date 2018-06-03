@@ -1,0 +1,11 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/koro2_airspeeder/CockpitSkin"
+	"$nocull" "1"
+	"$selfillum"		"1"
+   	"$selfillummask"	"starwars/syphadias/ships/koro2_airspeeder/CockpitSkin_Spec"
+	"$Phong"		"1"
+	"$PhongBoost"		"1.7"
+	"$phongexponent"	"7.3"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+}

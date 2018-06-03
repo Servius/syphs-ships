@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/yoda_starfighter/Yoda_Fighter"
+	"$bumpmap" "starwars/syphadias/ships/yoda_starfighter/Yoda_Fighter_B"
+}

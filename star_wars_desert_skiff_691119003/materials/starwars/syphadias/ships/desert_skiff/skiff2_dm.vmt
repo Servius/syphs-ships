@@ -1,0 +1,11 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/desert_skiff/Skiff2_dm"
+	//"$nocull" "1"
+	"$selfillum"		"1"
+   	"$selfillummask"	"starwars/syphadias/ships/desert_skiff/Skiff2_spec"
+	"$Phong"		"1"
+	"$PhongBoost"		"1.7"
+	"$phongexponent"	"7.3"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+}

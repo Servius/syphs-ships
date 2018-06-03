@@ -1,0 +1,7 @@
+"UnlitGeneric" 
+{ 
+	"$basetexture"		"VGUI/entities/fo_tie_original" 
+	"$vertexcolor" 		1 
+	"$vertexalpha" 		1 
+	"$nolod" 			1 
+} 

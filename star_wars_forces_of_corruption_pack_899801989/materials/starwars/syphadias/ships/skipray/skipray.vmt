@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/skipray/skipray"
+	"$bumpmap" "starwars/syphadias/ships/skipray/skipray_b"
+}

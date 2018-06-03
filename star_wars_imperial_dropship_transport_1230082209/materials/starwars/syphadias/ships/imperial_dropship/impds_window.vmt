@@ -1,0 +1,10 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/imperial_dropship/impds_window"
+	"$envmap"		"env_cubemap"
+	"$envmaptint"		"[0.1 0.1 0.1]"
+	"$refractamount"	".6" 
+	"$envmapsaturation"	".9"
+
+	"$nocull" 1
+}

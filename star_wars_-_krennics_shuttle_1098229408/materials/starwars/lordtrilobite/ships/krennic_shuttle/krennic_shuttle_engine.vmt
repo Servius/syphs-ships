@@ -1,0 +1,10 @@
+"VertexlitGeneric"
+
+//Krennics Shuttle
+//model made by Olof Moleman AKA Lord Trilobite
+//ported to Source by Syphadias
+{
+	"$basetexture"			"starwars/lordtrilobite/ships/krennic_shuttle/krennic_shuttle_engine"
+
+	"$selfillum" 			"1"
+}

@@ -1,0 +1,18 @@
+"VertexlitGeneric"
+
+//Delta 7
+//model made by Olof Moleman AKA Lord Trilobite
+//ported to Source by Syphadias
+{
+	"$basetexture"		"starwars/lordtrilobite/ships/delta7/tx_delta7_landgear"
+	"$bumpmap"		"starwars/lordtrilobite/ships/delta7/tx_delta7_landgear_NRM"
+
+	"$halflambert"			"1"
+
+	//"$normalmapalphaenvmapmask"	"1"
+
+	"$Phong"			"1"
+	"$PhongBoost"			"0.8"
+	"$phongexponent"		"17.8"
+	"$PhongFresnelRanges"		"[.05 .5 1]"
+}

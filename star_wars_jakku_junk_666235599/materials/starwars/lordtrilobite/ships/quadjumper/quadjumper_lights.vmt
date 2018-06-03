@@ -1,0 +1,10 @@
+"VertexlitGeneric"
+
+//Quadjumper
+//model made by Olof Moleman AKA Lord Trilobite
+//ported to Source by Syphadias
+{
+	"$basetexture" "starwars/lordtrilobite/ships/quadjumper/quadjumper_lights"
+	"$selfillum" "1"
+	"$selfillummask" "starwars/lordtrilobite/ships/quadjumper/quadjumper_lights"
+}

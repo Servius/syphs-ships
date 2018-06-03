@@ -1,0 +1,8 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/desert_skiff/Skiff_sm"
+	"$Phong"		"1"
+	"$PhongBoost"		"1.7"
+	"$phongexponent"	"7.3"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+}

@@ -1,0 +1,21 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/imperial_dropship/impds_hull"
+	"$bumpmap" "starwars/syphadias/ships/imperial_dropship/impds_hull_NRM"
+
+	"$detail" "starwars/syphadias/ships/imperial_dropship/impds_hull_DETAIL2"
+	"$detailscale"			"1"
+	"$detailblendfactor"		".7"
+	"$detailblendmode"		"0.2"
+
+	"$Phong"			"1"
+	"$PhongBoost"			"1.6"
+	"$phongexponent"		"24.8"
+	"$PhongFresnelRanges"		"[.05 .5 1]"
+
+	"$selfillum"		"50"
+   	"$selfillummask"	"starwars/syphadias/ships/imperial_dropship/impds_hull_ILUM"
+
+	"$normalmap" "starwars/syphadias/ships/imperial_dropship/impds_hull_DETAIL1"
+	"$nocull" 1
+}

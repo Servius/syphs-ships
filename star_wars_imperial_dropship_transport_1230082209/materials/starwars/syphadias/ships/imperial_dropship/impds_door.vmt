@@ -1,0 +1,18 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/imperial_dropship/impds_door"
+	"$bumpmap" "starwars/syphadias/ships/imperial_dropship/impds_door_NRM"
+
+	"$detail" "starwars/syphadias/ships/imperial_dropship/impds_door_DETAIL1"
+	"$detailscale"			"1"
+	"$detailblendfactor"		".7"
+	"$detailblendmode"		"0.2"
+
+	"$Phong"			"1"
+	"$PhongBoost"			"1.6"
+	"$phongexponent"		"24.8"
+	"$PhongFresnelRanges"		"[.05 .5 1]"
+
+	"$normalmap" "starwars/syphadias/ships/imperial_dropship/impds_door_DETAIL2"
+	"$nocull" 1
+}

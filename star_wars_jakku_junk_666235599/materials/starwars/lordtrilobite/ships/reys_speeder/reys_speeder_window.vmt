@@ -1,0 +1,14 @@
+"VertexlitGeneric"
+
+//Reys Speeder
+//model made by Olof Moleman AKA Lord Trilobite
+//ported to Source by Syphadias
+{
+	"$basetexture"		"starwars/lordtrilobite/ships/reys_speeder/reys_speeder_window"
+	"$translucent"		"1"
+
+	"$envmap"		"env_cubemap"
+	"$envmaptint"		"[0.4 0.4 0.4]"
+	"$envmapsaturation" 	"0.2"
+
+}

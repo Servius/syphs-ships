@@ -1,0 +1,7 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/awing_rz2/awing_rz2_screen"
+	
+	"$selfillum"		"1"
+   	"$selfillummask"	"starwars/syphadias/ships/awing_rz2/awing_rz2_screen"
+}

@@ -1,0 +1,18 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/organa_xj2/organa_speeder_cockpit"
+	"$bumpmap" "starwars/syphadias/ships/organa_xj2/organa_speeder_cockpit_NRM"
+	
+	"$detail" "starwars/syphadias/ships/organa_xj2/organa_speeder_cockpit_DETAIL"
+	"$detailscale"			"1"
+	"$detailblendfactor"		".7"
+	"$detailblendmode"		"0.2"
+
+	"$nocull" 		"1"
+	"$selfillum"	"1"
+   	"$selfillummask"	"starwars/syphadias/ships/organa_xj2/organa_speeder_cockpit_ILUM"
+	"$Phong"		"1"
+	"$PhongBoost"		".1"
+	"$phongexponent"	"7.3"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+}

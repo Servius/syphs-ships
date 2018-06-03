@@ -1,0 +1,11 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" 	"starwars\syphadias\ships\AT-TE\legs"
+	"$bumpmap" "starwars\syphadias\ships\AT-TE\legs_normal"
+
+	"$nocull"	"1"
+
+	"$Phong" "1"
+	"$PhongBoost" "3"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+}

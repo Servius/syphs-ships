@@ -1,0 +1,11 @@
+"UnlitGeneric"
+
+//Delta 7
+//model made by Olof Moleman AKA Lord Trilobite
+//ported to Source by Syphadias
+{
+	"$basetexture"		"starwars/lordtrilobite/ships/delta7/tx_delta7_screens"
+
+	"$translucent"		"1"
+	"$additive"		"1"
+}

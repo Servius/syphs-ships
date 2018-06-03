@@ -1,0 +1,17 @@
+"VertexlitGeneric"
+
+//original author Andre Muller
+//ported by Syphadias
+//tweaked by Lord Trilobite
+{
+	"$basetexture"		"starwars/syphadias/ships/naboors/nrs-uhull"
+	"$envmaptint"		"[0.8 0.8 0.8]"
+	"$refractamount"	".10" 
+	"$envmap"		"env_cubemap"
+	"$envmapsaturation"	"0.5"
+
+	"$detail" 		"detail\metal_detail_01"
+	"$detailscale" 		"7.42"
+	"$detailblendfactor" 	"0.55"
+	"$detailblendmode" 	"0"
+}

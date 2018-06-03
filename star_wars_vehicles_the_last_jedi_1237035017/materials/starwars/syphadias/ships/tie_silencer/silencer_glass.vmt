@@ -1,0 +1,10 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/tie_silencer/silencer_glass"
+	"$translucent" 1
+	
+	"$Phong"		"1"
+	"$PhongBoost"		"1.7"
+	"$phongexponent"	"7.3"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+}

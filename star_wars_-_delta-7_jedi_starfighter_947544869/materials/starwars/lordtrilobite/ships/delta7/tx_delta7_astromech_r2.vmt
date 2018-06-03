@@ -1,0 +1,23 @@
+"VertexlitGeneric"
+
+//Delta 7
+//model made by Olof Moleman AKA Lord Trilobite
+//ported to Source by Syphadias
+{
+	"$basetexture"		"starwars/lordtrilobite/ships/delta7/tx_delta7_astromech_R2"
+	"$bumpmap"		"starwars/lordtrilobite/ships/delta7/tx_delta7_astromech_NRM"
+
+	"$selfillum"			"1"
+
+	"$envmap"			"env_cubemap"
+
+	"$envmaptint"			"[0.25 0.25 0.25]"
+   	"$normalmapalphaenvmapmask"	"1"
+	"$model"			"1"
+
+
+	"$detail"			"detail\metal_detail_01"
+	"$detailscale"			"4.283"
+	"$detailblendfactor"		"0.78"
+	"$detailblendmode"		"0"
+}

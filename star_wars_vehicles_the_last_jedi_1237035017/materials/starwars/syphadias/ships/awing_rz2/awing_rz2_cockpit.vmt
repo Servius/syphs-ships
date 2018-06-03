@@ -1,0 +1,8 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/awing_rz2/awing_rz2_cockpit"
+	//"$bumpmap" "starwars/syphadias/ships/awing_rz2/awing_rz2_cockpit_n"
+	
+	"$selfillum"		"1"
+   	"$selfillummask"	"starwars/syphadias/ships/awing_rz2/awing_rz2_cockpit_s"
+}

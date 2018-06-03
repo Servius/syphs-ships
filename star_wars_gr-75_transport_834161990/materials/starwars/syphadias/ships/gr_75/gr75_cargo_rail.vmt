@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/gr_75/gr75_cargo_rail"
+	"$bumpmap" "starwars/syphadias/ships/gr_75/gr75_cargo_rail_NRM"
+}

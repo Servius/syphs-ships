@@ -1,0 +1,18 @@
+"VertexlitGeneric"
+
+//original author Andre Muller
+//ported by Syphadias
+//tweaked by Lord Trilobite
+{
+	"$basetexture"		"starwars\syphadias\ships\naboors\nrs-cockpit"
+
+	"$Phong"		"1"
+	"$PhongBoost"		"3.2"
+	"$phongexponent"	"39.8"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+
+	"$detail" 		"detail\metal_detail_01"
+	"$detailscale" 		"10"
+	"$detailblendfactor" 	"0.35"
+	"$detailblendmode" 	"0"
+}

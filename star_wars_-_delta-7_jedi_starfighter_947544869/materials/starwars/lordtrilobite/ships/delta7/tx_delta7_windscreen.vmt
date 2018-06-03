@@ -1,0 +1,14 @@
+"VertexlitGeneric"
+
+//Delta 7
+//model made by Olof Moleman AKA Lord Trilobite
+//ported to Source by Syphadias
+{
+	"$basetexture"		"starwars/lordtrilobite/ships/delta7/tx_delta7_windscreen"
+	"$translucent"		"1"
+
+	"$envmap"		"env_cubemap"
+	"$envmaptint"		"[0.4 0.4 0.4]"
+	"$envmapsaturation" 	"0.2"
+
+}

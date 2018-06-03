@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/crusader_c_corv/Uv_crusaderclasscorvette"
+	"$bumpmap" "starwars/syphadias/ships/crusader_c_corv/Uv_crusaderclasscorvette_b"
+}

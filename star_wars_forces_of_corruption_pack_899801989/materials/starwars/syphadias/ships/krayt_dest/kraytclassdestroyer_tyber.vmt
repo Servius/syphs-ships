@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/krayt_dest/kraytclassdestroyer_tyber"
+	"$bumpmap" "starwars/syphadias/ships/krayt_dest/kraytclassdestroyer_b_tyber"
+}

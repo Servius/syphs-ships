@@ -1,0 +1,20 @@
+"VertexlitGeneric"
+
+//Quadjumper
+//model made by Olof Moleman AKA Lord Trilobite
+//ported to Source by Syphadias
+{
+	"$basetexture"			"starwars/lordtrilobite/ships/quadjumper/quadjumper_engine"
+	"$bumpmap"			"starwars/lordtrilobite/ships/quadjumper/quadjumper_engine_NRM"
+
+	"$Phong"			"1"
+	"$PhongBoost"			"0.8"
+	"$phongexponent"		"21.8"
+	"$PhongFresnelRanges"		"[.05 .5 1]"
+
+
+	"$detail"			"detail\metal_detail_01"
+	"$detailscale"			"16.283"
+	"$detailblendfactor"		"0.7"
+	"$detailblendmode"		"0"
+}

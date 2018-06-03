@@ -1,0 +1,11 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/executive_cruiser/executive_cruiser_glass"
+	"$envmap"		"env_cubemap"
+	"$envmaptint"		"[0.5 0.5 0.5]"
+	"$refractamount"	".6" 
+	"$envmapsaturation"	".9"
+
+	"$nocull"		"1"
+	"$translucent"		"1"
+}

@@ -1,0 +1,13 @@
+"VertexlitGeneric"
+
+//model and texture made by Olof Moleman AKA Lord Trilobite
+//model ported to source by Syphadias
+{
+	"$basetexture"		"starwars/lordtrilobite/podracers/neva_kee/podracer_nevakee_cockpit_junk"
+	"$bumpmap"		"starwars/lordtrilobite/podracers/neva_kee/podracer_nevakee_cockpit_NRM"
+
+	"$detail" 		"detail\metal_detail_01"
+	"$detailscale" 		"6.2"
+	"$detailblendfactor" 	"1.11"
+	"$detailblendmode" 	"0"
+}

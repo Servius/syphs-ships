@@ -1,0 +1,18 @@
+"VertexlitGeneric"
+{
+	"$basetexture" 	"starwars/syphadias/ships/executive_cruiser/executive_cruiser_3"
+	"$bumpmap" 	"starwars/syphadias/ships/executive_cruiser/executive_cruiser_3_NRM"
+
+	"$detail" 		"starwars/syphadias/ships/executive_cruiser/executive_cruiser_3"
+	"$detailscale"			"1"
+	"$detailblendfactor"		".7"
+	"$detailblendmode"		"0.2"
+
+	"$nocull" 		"1"
+	"$selfillum"	"1"
+   	"$selfillummask"	"starwars/syphadias/ships/executive_cruiser/executive_cruiser_3_ILUM"
+	"$Phong"		"1"
+	"$PhongBoost"		".5"
+	"$phongexponent"	"7.3"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+}

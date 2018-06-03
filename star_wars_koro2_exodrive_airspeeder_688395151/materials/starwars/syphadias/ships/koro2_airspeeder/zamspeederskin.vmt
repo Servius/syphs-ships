@@ -1,0 +1,17 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/koro2_airspeeder/ZamSpeederSkin"
+	"$nocull" "1"
+	"$selfillum"		"1"
+   	"$selfillummask"	"starwars/syphadias/ships/koro2_airspeeder/ZamSpeederSkin_Spec"
+
+	"$Phong"		"1"
+	"$PhongBoost"		"1.7"
+	"$phongexponent"	"7.3"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+
+	"$detail" 		"detail\metal_detail_01"
+	"$detailscale" 		"11.2"
+	"$detailblendfactor" 	"0.81"
+	"$detailblendmode" 	"0"
+}

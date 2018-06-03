@@ -1,0 +1,10 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "starwars/syphadias/ships/awing_rz2/awing_rz2_hull"
+	"$bumpmap" "starwars/syphadias/ships/awing_rz2/awing_rz2_hull_n"
+	
+	"$Phong"		"1"
+	"$PhongBoost"		"1.1"
+	"$phongexponent"	"7.3"
+	"$PhongFresnelRanges"	"[.05 .5 1]"
+}
