@@ -4,7 +4,7 @@ ENT.Type = "vehicle"
 
 ENT.PrintName = "Eta-2 (Yoda)"
 ENT.Author = "Liam0102, Syphadias"
-ENT.Category = "Star Wars"
+ENT.Category = "Star Wars: Republic"
 ENT.AutomaticFrameAdvance = true
 ENT.Spawnable = false;
 ENT.AdminOnly = false;

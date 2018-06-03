@@ -36,7 +36,7 @@ function ENT:Initialize()
 	local driverAng = self:GetAngles()+Angle(0,-90,0);
 	self:SpawnChairs(driverPos,driverAng,false);
 
-	//self:TestLoc(self:GetPos()+self:GetUp()*0+self:GetForward()*265+self:GetRight()*0)
+	--self:TestLoc(self:GetPos()+self:GetUp()*0+self:GetForward()*265+self:GetRight()*0)
 	
 	self.ForwardSpeed = 750;
 	self.BoostSpeed = 1300
@@ -79,11 +79,11 @@ ENT.BoostTimer = CurTime();
 function ENT:Boost()
 	
 	if(self.NextUse.Boost < CurTime()) then
-		//self.Accel.FWD = self.BoostSpeed;
-		//self.Boosting = true;
+		--self.Accel.FWD = self.BoostSpeed;
+		--self.Boosting = true;
 		self:EmitSound(Sound("podracer/pod_shift.wav"),100,100,1,CHAN_VOICE)
-		//self.BoostTimer = CurTime()+5;
-		//self.NextUse.Boost = CurTime() + 10;
+		--self.BoostTimer = CurTime()+5;
+		--self.NextUse.Boost = CurTime() + 10;
 	end
 
 end
@@ -124,7 +124,7 @@ if CLIENT then
 	ENT.Sounds={
 		Engine=Sound("podracer/pod_loop.wav"),
 	}
-	//Engine=Sound("landspeeder_fly.wav"),
+	--Engine=Sound("landspeeder_fly.wav"),
 	local Health = 0;
 	function ENT:Think()
 		self.BaseClass.Think(self);
@@ -138,12 +138,12 @@ if CLIENT then
 	end
 
     function ENT:Effects()
-        local normal = (self:GetForward() * -100):GetNormalized() // More or less the direction. You can leave this for the most part (If it's going the opposite way, then change it 1 not -1)
-        local roll = math.Rand(-90,90) // Random roll so the effect isn't completely static (Useful for heatwave type)
-        local p = LocalPlayer() // Player (duh)
-        local id = self:EntIndex(); //Need this later on.
+        local normal = (self:GetForward() * -100):GetNormalized() -- More or less the direction. You can leave this for the most part (If it's going the opposite way, then change it 1 not -1)
+        local roll = math.Rand(-90,90) -- Random roll so the effect isn't completely static (Useful for heatwave type)
+        local p = LocalPlayer() -- Player (duh)
+        local id = self:EntIndex(); --Need this later on.
    
-        //Get the engine pos the same way you get weapon pos
+        --Get the engine pos the same way you get weapon pos
         self.EnginePos = {
             self:GetPos()+self:GetForward()*-155+self:GetUp()*89+self:GetRight()*-111.4,
             self:GetPos()+self:GetForward()*-155+self:GetUp()*89+self:GetRight()*111.4,
@@ -155,15 +155,15 @@ if CLIENT then
    
         for k,v in pairs(self.EnginePos) do
    
-            local red = self.FXEmitter:Add("sprites/orangecore1",v) // This is where you add the effect. The ones I use are either the current or "sprites/bluecore"
-            red:SetVelocity(normal) //Set direction we made earlier
-            red:SetDieTime(.075) //How quick the particle dies. Make it larger if you want the effect to hang around
-            red:SetStartAlpha(255) // Self explanitory. How visible it is.
-            red:SetEndAlpha(255) // How visible it is at the end
-            red:SetStartSize(30) // Start size. Just play around to find the right size.
-            red:SetEndSize(4) // End size
-            red:SetRoll(roll) // They see me rollin. (They hatin')
-            red:SetColor(255,200,100) // Set the colour in RGB. This is more of an overlay colour effect and doesn't change the material source.
+            local red = self.FXEmitter:Add("sprites/orangecore1",v) -- This is where you add the effect. The ones I use are either the current or "sprites/bluecore"
+            red:SetVelocity(normal) --Set direction we made earlier
+            red:SetDieTime(.075) --How quick the particle dies. Make it larger if you want the effect to hang around
+            red:SetStartAlpha(255) -- Self explanitory. How visible it is.
+            red:SetEndAlpha(255) -- How visible it is at the end
+            red:SetStartSize(30) -- Start size. Just play around to find the right size.
+            red:SetEndSize(4) -- End size
+            red:SetRoll(roll) -- They see me rollin. (They hatin')
+            red:SetColor(255,200,100) -- Set the colour in RGB. This is more of an overlay colour effect and doesn't change the material source.
  
  			local heatwv = self.FXEmitter:Add("sprites/heatwave",v);
 			heatwv:SetVelocity(normal*2);
@@ -175,15 +175,15 @@ if CLIENT then
 			heatwv:SetColor(255,255,255);
 			heatwv:SetRoll(roll);
  
-            local dynlight = DynamicLight(id + 4096 * k); // Create the "glow"
-            dynlight.Pos = v; // Position from the table
-            dynlight.Brightness = 6; // Brightness, Don't go above 10. It's blinding
-            dynlight.Size = 50; // How far it reaches
-            dynlight.Decay = 500; // Not really sure what this does, but I leave it in
-            dynlight.R = 255; // Colour R
-            dynlight.G = 200; // Colour G
-            dynlight.B = 200; // Colour B
-            dynlight.DieTime = CurTime()+1; // When the light should die
+            local dynlight = DynamicLight(id + 4096 * k); -- Create the "glow"
+            dynlight.Pos = v; -- Position from the table
+            dynlight.Brightness = 6; -- Brightness, Don't go above 10. It's blinding
+            dynlight.Size = 50; -- How far it reaches
+            dynlight.Decay = 500; -- Not really sure what this does, but I leave it in
+            dynlight.R = 255; -- Colour R
+            dynlight.G = 200; -- Colour G
+            dynlight.B = 200; -- Colour B
+            dynlight.DieTime = CurTime()+1; -- When the light should die
         end
 		
 		for k,v in pairs(self.EnginePos2) do
@@ -211,8 +211,8 @@ if CLIENT then
 
 			if(IsValid(DriverSeat)) then
 				if(DriverSeat:GetThirdPersonMode()) then
-					local pos = self:GetPos()+self:GetForward()*-550+self:GetUp()*225; //+self:GetRight()*115;
-					//local face = self:GetAngles() + Angle(0,-90,0);
+					local pos = self:GetPos()+self:GetForward()*-550+self:GetUp()*225; --+self:GetRight()*115;
+					--local face = self:GetAngles() + Angle(0,-90,0);
 					local face = ((self:GetPos() + Vector(0,0,100))- pos):Angle()+Angle(0,0,0);
 						View.origin = pos;
 						View.angles = face;
@@ -237,12 +237,12 @@ if CLIENT then
 	function PodNevaKeeReticle()
 	
 		local p = LocalPlayer();
-		local Flying = p:GetNWBool("FlyingPodNevaKee");// Flying with your unique name
-		local self = p:GetNWEntity("PodNevaKee"); // Unique name
+		local Flying = p:GetNWBool("FlyingPodNevaKee");-- Flying with your unique name
+		local self = p:GetNWEntity("PodNevaKee"); -- Unique name
 		if(Flying and IsValid(self)) then
 			SW_Speeder_DrawHull(1200)
 			SW_Speeder_DrawSpeedometer()
 		end
 	end
-	hook.Add("HUDPaint", "PodNevaKeeReticle", PodNevaKeeReticle) //Unique names again
+	hook.Add("HUDPaint", "PodNevaKeeReticle", PodNevaKeeReticle) --Unique names again
 end

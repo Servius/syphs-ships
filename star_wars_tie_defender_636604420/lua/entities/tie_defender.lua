@@ -16,14 +16,14 @@ ENT.Allegiance = "Empire"
 list.Set("SWVehicles", ENT.PrintName, ENT);
 if SERVER then
  
-ENT.FireSound = Sound("weapons/tie_shoot.wav"); // The sound to make when firing the weapons. You do not need the sounds folder at the start
-ENT.NextUse = {Wings = CurTime(),Use = CurTime(),Fire = CurTime(),}; //Leave this alone for the most part.
-ENT.StartHealth = 2250; //How much health they should have.
+ENT.FireSound = Sound("weapons/tie_shoot.wav"); -- The sound to make when firing the weapons. You do not need the sounds folder at the start
+ENT.NextUse = {Wings = CurTime(),Use = CurTime(),Fire = CurTime(),}; --Leave this alone for the most part.
+ENT.StartHealth = 2250; --How much health they should have.
  
 AddCSLuaFile();
 function ENT:SpawnFunction(pl, tr)
-    local e = ents.Create("tie_defender"); // This should be the same name as the file
-    //You can ignore the rest
+    local e = ents.Create("tie_defender"); -- This should be the same name as the file
+    --You can ignore the rest
     e:SetPos(tr.HitPos + Vector(0,0,10));
     e:SetAngles(Angle(0,pl:GetAimVector():Angle().Yaw+0,0));
     e:Spawn();
@@ -34,35 +34,35 @@ end
 function ENT:Initialize()
  
  
-    self:SetNWInt("Health",self.StartHealth); // Set the ship health, to the start health as made earlier
+    self:SetNWInt("Health",self.StartHealth); -- Set the ship health, to the start health as made earlier
    
-    //The locations of the weapons (Where we shoot out of), local to the ship. These largely just take a lot of tinkering.
+    --The locations of the weapons (Where we shoot out of), local to the ship. These largely just take a lot of tinkering.
     self.WeaponLocations = {
 		Right = self:GetPos()+self:GetForward()*115+self:GetUp()*145+self:GetRight()*10, 
 		Left = self:GetPos()+self:GetForward()*115+self:GetUp()*145+self:GetRight()*-10,
     }
-    self.WeaponsTable = {}; // IGNORE
-    self.BoostSpeed = 1900; // The speed we go when holding SHIFT
-    self.ForwardSpeed = 1350; // The forward speed 
-    self.UpSpeed = 600; // Up/Down Speed
-    self.AccelSpeed = 8; // How fast we get to our previously set speeds
-    self.CanBack = true; // Can we move backwards? Set to true if you want this.
-	self.CanRoll = false; // Set to true if you want the ship to roll, false if not
-	self.CanStrafe = false; // Set to true if you want the ship to strafe, false if not. You cannot have roll and strafe at the same time
-	self.CanStandby = false; // Set to true if you want the ship to hover when not inflight
-	self.CanShoot = true; // Set to true if you want the ship to be able to shoot, false if not
+    self.WeaponsTable = {}; -- IGNORE
+    self.BoostSpeed = 1900; -- The speed we go when holding SHIFT
+    self.ForwardSpeed = 1350; -- The forward speed 
+    self.UpSpeed = 600; -- Up/Down Speed
+    self.AccelSpeed = 8; -- How fast we get to our previously set speeds
+    self.CanBack = true; -- Can we move backwards? Set to true if you want this.
+	self.CanRoll = false; -- Set to true if you want the ship to roll, false if not
+	self.CanStrafe = false; -- Set to true if you want the ship to strafe, false if not. You cannot have roll and strafe at the same time
+	self.CanStandby = false; -- Set to true if you want the ship to hover when not inflight
+	self.CanShoot = true; -- Set to true if you want the ship to be able to shoot, false if not
 	
-	self.AlternateFire = false // Set this to true if you want weapons to fire in sequence (You'll need to set the firegroups below)
-	//self.FireGroup = {"Left","Right"} // In this example, the weapon positions set above will fire with Left and TopLeft at the same time. And Right and TopRight at the same time.
+	self.AlternateFire = false -- Set this to true if you want weapons to fire in sequence (You'll need to set the firegroups below)
+	--self.FireGroup = {"Left","Right"} -- In this example, the weapon positions set above will fire with Left and TopLeft at the same time. And Right and TopRight at the same time.
 	
 	self.ExitModifier = {x=0,y=-100,z=5};
 	
-	self.LandOffset = Vector(0,0,0); // Change the last 0 if you're vehicle is having trouble landing properly. (Make it larger)
+	self.LandOffset = Vector(0,0,0); -- Change the last 0 if you're vehicle is having trouble landing properly. (Make it larger)
  
-    // Ignore these.
+    -- Ignore these.
     self.Cooldown = 2;
 
-    self.Bullet = CreateBulletStructure(80,"green"); // The first number is bullet damage, the second colour. green and red are the only options. (Set to blue for ion shot, the damage will be halved but ships will be disabled after consecutive hits).
+    self.Bullet = CreateBulletStructure(80,"green"); -- The first number is bullet damage, the second colour. green and red are the only options. (Set to blue for ion shot, the damage will be halved but ships will be disabled after consecutive hits).
 	
 	self.ChatterSounds = {
 		Sound("vehicles/tie_def/chatter/TDP0101_ENG.wav"), Sound("vehicles/tie_def/chatter/TDP0102_ENG.wav"), Sound("vehicles/tie_def/chatter/TDP0103_ENG.wav"), Sound("vehicles/tie_def/chatter/TDP0104_ENG.wav"), Sound("vehicles/tie_def/chatter/TDP0105_ENG.wav"),
@@ -92,7 +92,7 @@ function ENT:Initialize()
 	end
 	end)
 	
-    self.BaseClass.Initialize(self); // Ignore, needed to work
+    self.BaseClass.Initialize(self); -- Ignore, needed to work
 end
 
 function ENT:Exit(kill)
@@ -110,16 +110,16 @@ end
  
 if CLIENT then
  
-    function ENT:Draw() self:DrawModel() end // Ignore
-	ENT.CanFPV = true; // Set to true if you want FPV
+    function ENT:Draw() self:DrawModel() end -- Ignore
+	ENT.CanFPV = true; -- Set to true if you want FPV
     ENT.EnginePos = {}
     ENT.Sounds={
-        //Engine=Sound("ambient/atmosphere/ambience_base.wav"),
-        Engine=Sound("vehicles/tie/tie_fly3.wav"), // This is the flight sound. These can get complicated, so I'd use the ones I've already put in the addon
+        --Engine=Sound("ambient/atmosphere/ambience_base.wav"),
+        Engine=Sound("vehicles/tie/tie_fly3.wav"), -- This is the flight sound. These can get complicated, so I'd use the ones I've already put in the addon
     }
 
  
-    //This is where we set how the player sees the ship when flying
+    --This is where we set how the player sees the ship when flying
     local View = {}
     local function CalcView()
        
@@ -127,16 +127,16 @@ if CLIENT then
 		local p = LocalPlayer();
 		local self = p:GetNetworkedEntity("TieDef", NULL)
 		if(IsValid(self)) then
-			local fpvPos = self:GetPos()+self:GetForward()*3+self:GetUp()*185+self:GetRight()*0 // This is the position of the first person view if you have it
-			View = SWVehicleView(self,700,400,fpvPos);		// 700 is distance from vehicle, 200 is the height.
+			local fpvPos = self:GetPos()+self:GetForward()*3+self:GetUp()*185+self:GetRight()*0 -- This is the position of the first person view if you have it
+			View = SWVehicleView(self,700,400,fpvPos);		-- 700 is distance from vehicle, 200 is the height.
 			return View;
 		end
     end
-    hook.Add("CalcView", "TieDefView", CalcView) // This is very important. Make sure the middle arguement is unique. In this case the ship name + view
+    hook.Add("CalcView", "TieDefView", CalcView) -- This is very important. Make sure the middle arguement is unique. In this case the ship name + view
  
 	local HUD = surface.GetTextureID("vgui/tie_cockpit");
 	
-    local function TieDefReticle() //Make this unique. Again Ship name + Reticle
+    local function TieDefReticle() --Make this unique. Again Ship name + Reticle
        
 		local p = LocalPlayer();
 		local Flying = p:GetNWBool("FlyingTieDef");
@@ -145,14 +145,14 @@ if CLIENT then
 			if(SW_GetFPV()) then
 				SW_HUD_FPV(HUD);
             end
-			SW_HUD_DrawHull(2250); // Replace 1000 with the starthealth at the top
+			SW_HUD_DrawHull(2250); -- Replace 1000 with the starthealth at the top
 			SW_WeaponReticles(self);
 			SW_HUD_DrawOverheating(self);
 			SW_HUD_Compass(self);
 			SW_HUD_DrawSpeedometer();
 		end
     end
-    hook.Add("HUDPaint", "TieDefReticle", TieDefReticle) // Here you need to make the middle argument something unique again. I've set it as what the function is called. Could be anything. And the final arguement should be the function just made.
+    hook.Add("HUDPaint", "TieDefReticle", TieDefReticle) -- Here you need to make the middle argument something unique again. I've set it as what the function is called. Could be anything. And the final arguement should be the function just made.
  
 end
  

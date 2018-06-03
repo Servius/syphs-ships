@@ -38,33 +38,33 @@ function ENT:Initialize()
  
     self:SetNWInt("Health",self.StartHealth); 
    
-    //The locations of the weapons (Where we shoot out of), local to the ship. These largely just take a lot of tinkering.
+    --The locations of the weapons (Where we shoot out of), local to the ship. These largely just take a lot of tinkering.
     self.WeaponLocations = {
         Right = self:GetPos() + self:GetForward() * -30 + self:GetRight() * 432 + self:GetUp() * -17.25,
         TopRight = self:GetPos() + self:GetForward() * -30 + self:GetRight() * 432 + self:GetUp() * -17.25,
         TopLeft = self:GetPos() + self:GetForward() * -30 + self:GetRight() * -432 + self:GetUp() * -17.25,
         Left = self:GetPos() + self:GetForward() * -30 + self:GetRight() * -432 + self:GetUp() * -17.25,
     }
-    self.WeaponsTable = {}; // IGNORE. Needed to give players their weapons back
-    self.BoostSpeed = 2250; // The speed we go when holding SHIFT
-    self.ForwardSpeed = 1600; // The forward speed 
-    self.UpSpeed = 600; // Up/Down Speed
-    self.AccelSpeed = 8; // How fast we get to our previously set speeds
-    self.CanBack = false; // Can we move backwards? Set to true if you want this.
-	self.CanRoll = false; // Set to true if you want the ship to roll, false if not
-	self.CanStrafe = true; // Set to true if you want the ship to strafe, false if not. You cannot have roll and strafe at the same time
-	self.CanStandby = true; // Set to true if you want the ship to hover when not inflight
-	self.CanShoot = false; // Set to true if you want the ship to be able to shoot, false if not
+    self.WeaponsTable = {}; -- IGNORE. Needed to give players their weapons back
+    self.BoostSpeed = 2250; -- The speed we go when holding SHIFT
+    self.ForwardSpeed = 1600; -- The forward speed 
+    self.UpSpeed = 600; -- Up/Down Speed
+    self.AccelSpeed = 8; -- How fast we get to our previously set speeds
+    self.CanBack = false; -- Can we move backwards? Set to true if you want this.
+	self.CanRoll = false; -- Set to true if you want the ship to roll, false if not
+	self.CanStrafe = true; -- Set to true if you want the ship to strafe, false if not. You cannot have roll and strafe at the same time
+	self.CanStandby = true; -- Set to true if you want the ship to hover when not inflight
+	self.CanShoot = false; -- Set to true if you want the ship to be able to shoot, false if not
 	
-	self.AlternateFire = false // Set this to true if you want weapons to fire in sequence (You'll need to set the firegroups below)
-	self.FireGroup = {"Left","Right","TopLeft","TopRight"} // In this example, the weapon positions set above will fire with Left and TopLeft at the same time. And Right and TopRight at the same time.
-	self.OverheatAmount = 50 //The amount a ship can fire consecutively without overheating. 50 is standard.
-	self.DontOverheat = false; // Set this to true if you don't want the weapons to ever overheat. Mostly only appropriate on Admin vehicles.
-	self.MaxIonShots = 20; // The amount of Ion shots a vehicle can take before being disabled. 20 is the default.
+	self.AlternateFire = false -- Set this to true if you want weapons to fire in sequence (You'll need to set the firegroups below)
+	self.FireGroup = {"Left","Right","TopLeft","TopRight"} -- In this example, the weapon positions set above will fire with Left and TopLeft at the same time. And Right and TopRight at the same time.
+	self.OverheatAmount = 50 --The amount a ship can fire consecutively without overheating. 50 is standard.
+	self.DontOverheat = false; -- Set this to true if you don't want the weapons to ever overheat. Mostly only appropriate on Admin vehicles.
+	self.MaxIonShots = 20; -- The amount of Ion shots a vehicle can take before being disabled. 20 is the default.
 	
-	self.PilotVisible = true; // Set to true if you want a visible version of the pilot sat in the vehicle. Useful for ships with a glass cockpit.
-	self.PilotPosition = {x=0,y=-22,z=20} // If the above is true, set the position here.
-	self.PilotAnim = "sit_rollercoaster"; //Set this to the animation you want. Common ones are: "drive_jeep", "drive_airboat" and "sit_rollercoaster". If you remove this it will default to "sit_rollercoaster"
+	self.PilotVisible = true; -- Set to true if you want a visible version of the pilot sat in the vehicle. Useful for ships with a glass cockpit.
+	self.PilotPosition = {x=0,y=-22,z=20} -- If the above is true, set the position here.
+	self.PilotAnim = "sit_rollercoaster"; --Set this to the animation you want. Common ones are: "drive_jeep", "drive_airboat" and "sit_rollercoaster". If you remove this it will default to "sit_rollercoaster"
 	self.PilotAngle = Angle(-35,0,0);
 	
 	self.StrafeSounds = {
@@ -76,14 +76,14 @@ function ENT:Initialize()
 	}
 	self.SoundNum = 1;
 	
-	self.HasLookaround = true; //Set to true if the ship has 3D cockpit you want the player to be able to lookaround
+	self.HasLookaround = true; --Set to true if the ship has 3D cockpit you want the player to be able to lookaround
 	
-	self.LandOffset = Vector(0,0,20); // Change the last 0 if you're vehicle is having trouble landing properly. (Make it larger)
-	self.ExitModifier = {x=-75,y=0,z=0}; // Change the position that you get out of the vehicle
+	self.LandOffset = Vector(0,0,20); -- Change the last 0 if you're vehicle is having trouble landing properly. (Make it larger)
+	self.ExitModifier = {x=-75,y=0,z=0}; -- Change the position that you get out of the vehicle
 
-    self.Bullet = CreateBulletStructure(60,"red",false); // The first number is bullet damage, the second colour. green and red are the only options. (Set to blue for ion shot, the damage will be halved but ships will be disabled after consecutive hits). The final one is for splash damage. Set to true if you don't want splashdamage.
+    self.Bullet = CreateBulletStructure(60,"red",false); -- The first number is bullet damage, the second colour. green and red are the only options. (Set to blue for ion shot, the damage will be halved but ships will be disabled after consecutive hits). The final one is for splash damage. Set to true if you don't want splashdamage.
 	
-    self.BaseClass.Initialize(self); // Ignore, needed to work
+    self.BaseClass.Initialize(self); -- Ignore, needed to work
 end
 
 function ENT:SpawnPilot(pos)
@@ -136,26 +136,26 @@ end
  
 if CLIENT then
 
-	ENT.CanFPV = true; // Set to true if you want FPV
+	ENT.CanFPV = true; -- Set to true if you want FPV
     ENT.EnginePos = {}
     ENT.Sounds={
-        //Engine=Sound("ambient/atmosphere/ambience_base.wav"),
-        Engine=Sound("vehicles/koro2/fly_koro2_base_loop.wav"), // This is the flight sound. These can get complicated, so I'd use the ones I've already put in the addon
+        --Engine=Sound("ambient/atmosphere/ambience_base.wav"),
+        Engine=Sound("vehicles/koro2/fly_koro2_base_loop.wav"), -- This is the flight sound. These can get complicated, so I'd use the ones I've already put in the addon
     }
 
-    //This is where we set how the player sees the ship when flying
+    --This is where we set how the player sees the ship when flying
     local View = {}
     local function CalcView()      
 		
 		local p = LocalPlayer();
 		local self = p:GetNetworkedEntity("Koro2", NULL)
 		if(IsValid(self)) then
-			local fpvPos = self:GetPos()+self:GetUp()*40+self:GetForward()*-35+self:GetRight()*0; // This is the position of the first person view if you have it
-			View = SWVehicleView(self,500,200,fpvPos,true); // 700 is distance from vehicle, 200 is the height. The final argument is for lookaround, if you set it to true earlier do the same here.
+			local fpvPos = self:GetPos()+self:GetUp()*40+self:GetForward()*-35+self:GetRight()*0; -- This is the position of the first person view if you have it
+			View = SWVehicleView(self,500,200,fpvPos,true); -- 700 is distance from vehicle, 200 is the height. The final argument is for lookaround, if you set it to true earlier do the same here.
 			return View;
 		end
     end
-    hook.Add("CalcView", "Koro2View", CalcView) // This is very important. Make sure the middle arguement is unique. In this case the ship name + view
+    hook.Add("CalcView", "Koro2View", CalcView) -- This is very important. Make sure the middle arguement is unique. In this case the ship name + view
  
 	hook.Add("ScoreboardShow","Koro2ScoreDisable", function()
 		local p = LocalPlayer();
@@ -168,17 +168,17 @@ if CLIENT then
 	local function Koro2Reticle()
 		
 		local p = LocalPlayer();
-		local Flying = p:GetNWBool("FlyingKoro2"); // Koro2 should be what you named your ship near the top
+		local Flying = p:GetNWBool("FlyingKoro2"); -- Koro2 should be what you named your ship near the top
 		local self = p:GetNWEntity("Koro2");
 		if(Flying and IsValid(self)) then
 			SW_HUD_DrawHull(1500); 
-			//SW_WeaponReticles(self);
-			//SW_HUD_DrawOverheating(self);
+			--SW_WeaponReticles(self);
+			--SW_HUD_DrawOverheating(self);
 			
-			local x = ScrW()/2; // The first person position of the compass. Set both x and y appropriatly
+			local x = ScrW()/2; -- The first person position of the compass. Set both x and y appropriatly
 			local y = ScrH()/4*3.1;
-			//SW_HUD_Compass(self,x,y); // Draw the compass/radar
-			SW_HUD_DrawSpeedometer(); // Draw the speedometer
+			--SW_HUD_Compass(self,x,y); -- Draw the compass/radar
+			SW_HUD_DrawSpeedometer(); -- Draw the speedometer
 		end
 	end
     hook.Add("HUDPaint", "Koro2Reticle", Koro2Reticle)

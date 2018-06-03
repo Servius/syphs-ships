@@ -42,7 +42,7 @@ function ENT:Initialize()
 	self.HasWings = true;
 
 	self.WeaponsTable = {};
-	//self:SpawnWeapons();
+	--self:SpawnWeapons();
 	self.BoostSpeed = 1500;
 	self.ForwardSpeed = 600;
 	self.UpSpeed = 600;
@@ -66,7 +66,7 @@ function ENT:Initialize()
 	end
 	self.PilotOffset = {x=0,y=200,z=200};
 	self.ExitModifier = {x=0,y=0,z=20}; 
-	//self:SetModelScale(5);
+	--self:SetModelScale(5);
 	self.BaseClass.Initialize(self)
 	
 	
@@ -232,7 +232,7 @@ function ENT:PunchingIt(Dest)
 				self:EmitSound(self.HyperDriveSound,100);
 				self.PlayedSound = true;
 			end
-			//util.ScreenShake(self:GetPos()+self:GetForward()*-730+self:GetUp()*195+self:GetRight()*3,5,5,10,5000)
+			--util.ScreenShake(self:GetPos()+self:GetForward()*-730+self:GetUp()*195+self:GetRight()*3,5,5,10,5000)
 		else
 			self.Accel.FWD = 4000;
 			self.LightSpeedWarp = CurTime()+0.5;
@@ -300,7 +300,7 @@ if CLIENT then
 
 	end
 	
-	//"ambient/atmosphere/ambience_base.wav"
+	--"ambient/atmosphere/ambience_base.wav"
 	local View = {}
 	local lastpos, lastang;
 	local function CalcView()

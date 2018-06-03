@@ -32,20 +32,20 @@ end
 
 function ENT:Initialize()
 	self.BaseClass.Initialize(self);
-	local driverPos = self:GetPos()+self:GetUp()*4+self:GetForward()*3.5; // Position of the drivers seat
-	local driverAng = self:GetAngles()+Angle(0,90,0); // The angle of the drivers seat
+	local driverPos = self:GetPos()+self:GetUp()*4+self:GetForward()*3.5; -- Position of the drivers seat
+	local driverAng = self:GetAngles()+Angle(0,90,0); -- The angle of the drivers seat
 	self:SpawnChairs(driverPos,driverAng,false)
 	
-	self.ForwardSpeed = -50; //Your speed
-	self.BoostSpeed = -80 // Boost Speed
-	self.AccelSpeed = 2; // Acceleration
+	self.ForwardSpeed = -50; --Your speed
+	self.BoostSpeed = -80 -- Boost Speed
+	self.AccelSpeed = 2; -- Acceleration
 	self.WeaponLocations = {
-		Main = self:GetPos()+self:GetRight()*100+self:GetUp()*15, // Position of weapon
+		Main = self:GetPos()+self:GetRight()*100+self:GetUp()*15, -- Position of weapon
 	}
-	self.HoverMod = 50; // If you're vehicle keeps hitting the floor increase this	
-	self.StartHover = 25; // How high you are at flat ground
-	self.StandbyHoverAmount = -10; // How high the speeder is when no one is in it	
-	self.Bullet = CreateBulletStructure(100,"red"); // First number is damage, second is colour. red or green
+	self.HoverMod = 50; -- If you're vehicle keeps hitting the floor increase this	
+	self.StartHover = 25; -- How high you are at flat ground
+	self.StandbyHoverAmount = -10; -- How high the speeder is when no one is in it	
+	self.Bullet = CreateBulletStructure(100,"red"); -- First number is damage, second is colour. red or green
 	
 	self.SpeederClass = 2
 	
@@ -53,27 +53,27 @@ function ENT:Initialize()
 
 end
 
-//function ENT:Enter(p)
-//	self.BaseClass.Enter(self,p);
-//	self:Rotorwash(false);
-//end
+--function ENT:Enter(p)
+--	self.BaseClass.Enter(self,p);
+--	self:Rotorwash(false);
+--end
 
 
-//Leave
-//function ENT:FireWeapons()
-//
-//	if(self.NextUse.Fire < CurTime()) then
-//		for k,v in pairs(self.Weapons) do
-//			self.Bullet.Src		= v:GetPos();
-//			self.Bullet.Attacker = self.Pilot or self;	
-//			self.Bullet.Dir = self.Pilot:GetAimVector():Angle():Forward();
-//
-//			v:FireBullets(self.Bullet)
-//		end
-//		self:EmitSound(self.FireSound, 120, math.random(90,110));
-//		self.NextUse.Fire = CurTime() + 0.3;
-//	end
-//end
+--Leave
+--function ENT:FireWeapons()
+--
+--	if(self.NextUse.Fire < CurTime()) then
+--		for k,v in pairs(self.Weapons) do
+--			self.Bullet.Src		= v:GetPos();
+--			self.Bullet.Attacker = self.Pilot or self;	
+--			self.Bullet.Dir = self.Pilot:GetAimVector():Angle():Forward();
+--
+--			v:FireBullets(self.Bullet)
+--		end
+--		self:EmitSound(self.FireSound, 120, math.random(90,110));
+--		self.NextUse.Fire = CurTime() + 0.3;
+--	end
+--end
 
 function ENT:Exit(kill)
 	local p;
@@ -86,7 +86,7 @@ function ENT:Exit(kill)
 	end
 end
 
-//Leave
+--Leave
 function ENT:Think()
 
 	if(self.Inflight) then
@@ -102,21 +102,21 @@ end
 local ZAxis = Vector(0,0,1);
 
 function ENT:PhysicsSimulate( phys, deltatime )
-	// You need three positions for speeders. Front middle and back
-	self.BackPos = self:GetPos()+self:GetForward()*5+self:GetUp()*0; // This is the back one
-	self.FrontPos = self:GetPos()+self:GetForward()*-5+self:GetUp()*0; // Front one
-	self.MiddlePos = self:GetPos()+self:GetUp()*0; // Middle one
-	// If you don't set them very well, you're speeder won't fly very well
+	-- You need three positions for speeders. Front middle and back
+	self.BackPos = self:GetPos()+self:GetForward()*5+self:GetUp()*0; -- This is the back one
+	self.FrontPos = self:GetPos()+self:GetForward()*-5+self:GetUp()*0; -- Front one
+	self.MiddlePos = self:GetPos()+self:GetUp()*0; -- Middle one
+	-- If you don't set them very well, you're speeder won't fly very well
 	if(self.Inflight) then
-		local UP = ZAxis; // Up direction. Leave
-		self.RightDir = self.Entity:GetRight(); // Which way is right, local to the model
-		self.FWDDir = self.Entity:GetForward(); // Forward Direction. Local to the model.	
+		local UP = ZAxis; -- Up direction. Leave
+		self.RightDir = self.Entity:GetRight(); -- Which way is right, local to the model
+		self.FWDDir = self.Entity:GetForward(); -- Forward Direction. Local to the model.	
 		
 
 		
-		self:RunTraces(); // Ignore
+		self:RunTraces(); -- Ignore
 
-		self.ExtraRoll = Angle(1,0,0); // ignore
+		self.ExtraRoll = Angle(1,0,0); -- ignore
 
 	end
 	
@@ -130,7 +130,7 @@ if CLIENT then
 		Engine=Sound(""),
 	}
 	
-	//Ignore
+	--Ignore
 	local Health = 0;
 	local Speed = 0;
 	function ENT:Think()
@@ -148,7 +148,7 @@ if CLIENT then
 	local function CalcView()
 		
 		local p = LocalPlayer();
-		local self = p:GetNWEntity("YodaHChair", NULL) // Set YodaHChair to your unique name
+		local self = p:GetNWEntity("YodaHChair", NULL) -- Set YodaHChair to your unique name
 		local DriverSeat = p:GetNWEntity("DriverSeat",NULL);
 		local PassengerSeat = p:GetNWEntity("PassengerSeat",NULL);
 
@@ -158,7 +158,7 @@ if CLIENT then
 				if(DriverSeat:GetThirdPersonMode()) then
 					local pos = self:GetPos()+self:GetForward()*150+self:GetUp()*40;
 					local face = self:GetAngles() + Angle(0,180,0);
-					//local face = ((self:GetPos() + Vector(0,0,100))- pos):Angle();
+					--local face = ((self:GetPos() + Vector(0,0,100))- pos):Angle();
 						View.origin = pos;
 						View.angles = face;
 					return View;
@@ -167,11 +167,11 @@ if CLIENT then
 
 		end
 	end
-	hook.Add("CalcView", "YodaHChairView", CalcView) ///Make sure the middle string is unique
+	hook.Add("CalcView", "YodaHChairView", CalcView) --/Make sure the middle string is unique
 
 	
 	hook.Add( "ShouldDrawLocalPlayer", "YodaHChairDrawPlayerModel", function( p )
-		local self = p:GetNWEntity("YodaHChair", NULL); // Set this to the unique name and ignore the rest
+		local self = p:GetNWEntity("YodaHChair", NULL); -- Set this to the unique name and ignore the rest
 		local DriverSeat = p:GetNWEntity("DriverSeat",NULL);
 		local PassengerSeat = p:GetNWEntity("PassengerSeat",NULL);
 		if(IsValid(self)) then
@@ -190,16 +190,16 @@ if CLIENT then
 	function YodaHChairReticle()
 	
 		local p = LocalPlayer();
-		local Flying = p:GetNWBool("FlyingYodaHChair");// Flying with your unique name
-		local self = p:GetNWEntity("YodaHChair"); // Unique name
+		local Flying = p:GetNWBool("FlyingYodaHChair");-- Flying with your unique name
+		local self = p:GetNWEntity("YodaHChair"); -- Unique name
 		if(Flying and IsValid(self)) then
-			local WeaponsPos = self:GetPos()+self:GetRight()*100+self:GetUp()*15; // Position of your weapon
+			local WeaponsPos = self:GetPos()+self:GetRight()*100+self:GetUp()*15; -- Position of your weapon
 			SW_Speeder_DrawHull(1000)
 			SW_Speeder_DrawSpeedometer()
 
 		end
 	end
-	hook.Add("HUDPaint", "YodaHChairReticle", YodaHChairReticle) //Unique names again
+	hook.Add("HUDPaint", "YodaHChairReticle", YodaHChairReticle) --Unique names again
 	
 	
 end

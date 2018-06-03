@@ -9,12 +9,12 @@ ENT.AutomaticFrameAdvance = true
 ENT.Spawnable = false;
 ENT.AdminOnly = false;
 
-ENT.Vehicle = "ProbeDroid"; // The unique name for the speeder.
-ENT.EntModel = "models/starwars/syphadias/ships/probe_droid/probe_droid.mdl"; // The path to your model
+ENT.Vehicle = "ProbeDroid"; -- The unique name for the speeder.
+ENT.EntModel = "models/starwars/syphadias/ships/probe_droid/probe_droid.mdl"; -- The path to your model
 ENT.Allegiance = "Empire"
 ENT.IsProbeDroid = true;
 
-ENT.StartHealth = 1000; // Starting Health
+ENT.StartHealth = 1000; -- Starting Health
 
 list.Set("SWVehicles", ENT.PrintName, ENT);
 if SERVER then
@@ -38,21 +38,21 @@ end
 
 function ENT:Initialize()
 	self.BaseClass.Initialize(self);
-	local driverPos = self:GetPos()+self:GetUp()*40+self:GetForward()*5; // Position of the drivers seat
-	local driverAng = self:GetAngles()+Angle(0,-90,0); // The angle of the drivers seat
+	local driverPos = self:GetPos()+self:GetUp()*40+self:GetForward()*5; -- Position of the drivers seat
+	local driverAng = self:GetAngles()+Angle(0,-90,0); -- The angle of the drivers seat
 	self:SpawnChairs(driverPos,driverAng,false)
 	
-	self.ForwardSpeed = 150; //Your speed
-	self.BoostSpeed = 215 // Boost Speed
-	self.AccelSpeed = 2; // Acceleration
+	self.ForwardSpeed = 150; --Your speed
+	self.BoostSpeed = 215 -- Boost Speed
+	self.AccelSpeed = 2; -- Acceleration
 	self.WeaponLocations = {
-		Main = self:GetPos()+self:GetRight()*0+self:GetUp()*63.5+self:GetForward()*22, // Position of weapon
+		Main = self:GetPos()+self:GetRight()*0+self:GetUp()*63.5+self:GetForward()*22, -- Position of weapon
 	}
 	self:SpawnWeapons();
-	self.HoverMod = 15; // If you're vehicle keeps hitting the floor increase this	
-	self.StartHover = 35; // How high you are at flat ground
-	self.StandbyHoverAmount = -10; // How high the speeder is when no one is in it	
-	self.Bullet = CreateBulletStructure(80,"red"); // First number is damage, second is colour. red or green
+	self.HoverMod = 15; -- If you're vehicle keeps hitting the floor increase this	
+	self.StartHover = 35; -- How high you are at flat ground
+	self.StandbyHoverAmount = -10; -- How high the speeder is when no one is in it	
+	self.Bullet = CreateBulletStructure(80,"red"); -- First number is damage, second is colour. red or green
 	self.CanShoot = true;
 	self.FireDelay = 0.5;
 	self.SpeederClass = 2;
@@ -173,13 +173,13 @@ hook.Add("PlayerLeaveVehicle", "ProbeSeatExit", function(p,v)
 end);
 
 function ENT:Exit(driver,kill)
-	//if(driver) then
+	--if(driver) then
 		if(IsValid(self.Pilot)) then
 			self.Pilot:SetNetworkedBool("Flying"..self.Vehicle,false);
 			self.Pilot:SetNetworkedEntity(self.Vehicle,NULL);
 			self.Pilot:SetNWEntity("DriverSeat",NULL);
 			
-		//	if (kill) then self.Pilot:Kill(); end
+		--	if (kill) then self.Pilot:Kill(); end
 			if(driver) then
 				self.Pilot:ExitVehicle(self.DriverChair);
 			end
@@ -196,24 +196,24 @@ function ENT:Exit(driver,kill)
 		if(IsValid(self.PilotAvatar)) then
 			self.PilotAvatar:Remove();
 		end
-	//end
+	--end
 	self.NextUse.Use = CurTime() + 1;
 end
 
 local ZAxis = Vector(0,0,1);
 
 function ENT:PhysicsSimulate( phys, deltatime )
-	// You need three positions for speeders. Front middle and back
-	self.BackPos = self:GetPos()+self:GetForward()*-5+self:GetUp()*0; // This is the back one
-	self.FrontPos = self:GetPos()+self:GetForward()*5+self:GetUp()*0; // Front one
-	self.MiddlePos = self:GetPos()+self:GetUp()*0; // Middle one
-	// If you don't set them very well, you're speeder won't fly very well
+	-- You need three positions for speeders. Front middle and back
+	self.BackPos = self:GetPos()+self:GetForward()*-5+self:GetUp()*0; -- This is the back one
+	self.FrontPos = self:GetPos()+self:GetForward()*5+self:GetUp()*0; -- Front one
+	self.MiddlePos = self:GetPos()+self:GetUp()*0; -- Middle one
+	-- If you don't set them very well, you're speeder won't fly very well
 	if(self.Inflight) then
-		local UP = ZAxis; // Up direction. Leave
-		self.RightDir = self.Entity:GetRight(); // Which way is right, local to the model
-		self.FWDDir = self.Entity:GetForward(); // Forward Direction. Local to the model.	
+		local UP = ZAxis; -- Up direction. Leave
+		self.RightDir = self.Entity:GetRight(); -- Which way is right, local to the model
+		self.FWDDir = self.Entity:GetForward(); -- Forward Direction. Local to the model.	
 
-		self.ExtraRoll = Angle(0,0,0); // ignore
+		self.ExtraRoll = Angle(0,0,0); -- ignore
 		
 		/*
 		This was pointless. You were literally doing nothing
@@ -241,7 +241,7 @@ if CLIENT then
 	local function CalcView()
 		
 		local p = LocalPlayer();
-		local self = p:GetNWEntity("ProbeDroid", NULL) // Set ProbeDroid to your unique name
+		local self = p:GetNWEntity("ProbeDroid", NULL) -- Set ProbeDroid to your unique name
 		local DriverSeat = p:GetNWEntity("DriverSeat",NULL);
 		local PassengerSeat = p:GetNWEntity("PassengerSeat",NULL);
 
@@ -251,7 +251,7 @@ if CLIENT then
 				if(DriverSeat:GetThirdPersonMode()) then
 					local pos = self:GetPos()+self:GetForward()*-200+self:GetUp()*85;
 					local face = self:GetAngles() + Angle(0,0,0);
-					//local face = ((self:GetPos() + Vector(0,0,100))- pos):Angle();
+					--local face = ((self:GetPos() + Vector(0,0,100))- pos):Angle();
 						View.origin = pos;
 						View.angles = face;
 					return View;
@@ -260,11 +260,11 @@ if CLIENT then
 
 		end
 	end
-	hook.Add("CalcView", "ProbeDroidView", CalcView) ///Make sure the middle string is unique
+	hook.Add("CalcView", "ProbeDroidView", CalcView) --/Make sure the middle string is unique
 
 	
 	hook.Add( "ShouldDrawLocalPlayer", "ProbeDroidDrawPlayerModel", function( p )
-		local self = p:GetNWEntity("ProbeDroid", NULL); // Set this to the unique name and ignore the rest
+		local self = p:GetNWEntity("ProbeDroid", NULL); -- Set this to the unique name and ignore the rest
 		local DriverSeat = p:GetNWEntity("DriverSeat",NULL);
 		local PassengerSeat = p:GetNWEntity("PassengerSeat",NULL);
 		if(IsValid(self)) then
@@ -279,8 +279,8 @@ if CLIENT then
 	function ProbeDroidReticle()
 	
 		local p = LocalPlayer();
-		local Flying = p:GetNWBool("FlyingProbeDroid");// Flying with your unique name
-		local self = p:GetNWEntity("ProbeDroid"); // Unique name
+		local Flying = p:GetNWBool("FlyingProbeDroid");-- Flying with your unique name
+		local self = p:GetNWEntity("ProbeDroid"); -- Unique name
 		if(Flying and IsValid(self)) then
 			local WeaponsPos = {self:GetPos()};
 			
@@ -289,7 +289,7 @@ if CLIENT then
 			SW_Speeder_DrawSpeedometer()
 		end
 	end
-	hook.Add("HUDPaint", "ProbeDroidReticle", ProbeDroidReticle) //Unique names again
+	hook.Add("HUDPaint", "ProbeDroidReticle", ProbeDroidReticle) --Unique names again
 	
 	
 end

@@ -105,7 +105,7 @@ function ENT:SpawnSeats()
        e:SetVehicleClass("sypha_seat");
        e:SetUseType(USE_OFF);
        e:SetCollisionGroup(COLLISION_GROUP_IN_VEHICLE)
-       //e:GetPhysicsObject():EnableCollisions(false); //Makes Players Get Stuck in nocollided seats.
+       --e:GetPhysicsObject():EnableCollisions(false); --Makes Players Get Stuck in nocollided seats.
        e.IsImpDropShipSeat = true;
        e.ImpDropShip = self;
  
@@ -154,8 +154,8 @@ hook.Add("PlayerLeaveVehicle", "ImpDropShipSeatExit", function(p,v)
         if(v.IsImpDropShipSeat) then
             local e = v.ImpDropShip;
             if(IsValid(e)) then
-                //p:SetPos(e:GetPos() + e:GetRight()*e.ExitModifier.x + e:GetForward() * e.ExitModifier.y + e:GetUp() * e.ExitModifier.z);
-                //p:SetPos(e:GetPos()+e:GetUp()*110)
+                --p:SetPos(e:GetPos() + e:GetRight()*e.ExitModifier.x + e:GetForward() * e.ExitModifier.y + e:GetUp() * e.ExitModifier.z);
+                --p:SetPos(e:GetPos()+e:GetUp()*110)
 				p:SetPos(v:GetPos()+v:GetUp()*10+v:GetRight()*0+v:GetForward()*0)
                 p:SetEyeAngles(e:GetAngles()+Angle(0,90,0))
             end
@@ -201,7 +201,7 @@ function ENT:Think()
 	end	
 
     if(self.Inflight) then
-        //self.AccelSpeed = math.Approach(self.AccelSpeed,7,0.2);
+        --self.AccelSpeed = math.Approach(self.AccelSpeed,7,0.2);
         if(IsValid(self.Pilot)) then
             if(IsValid(self.Pilot)) then 
                 if(self.Pilot:KeyDown(IN_ATTACK2) and self.NextUse.FireBlast < CurTime()) then
@@ -220,7 +220,7 @@ function ENT:Think()
 						self:GetPos()+self:GetForward()*240+self:GetUp()*13+self:GetRight()*-30, 
 						self:GetPos()+self:GetForward()*240+self:GetUp()*13+self:GetRight()*30, 
 						self:GetPos()+self:GetForward()*240+self:GetUp()*13+self:GetRight()*-30,
-                    } //Table of the positions from which to fire
+                    } --Table of the positions from which to fire
                     self:FireImpDropshipBlast(self.BlastPositions[self.NextBlast], false, 100, 100, true, 8, Sound("weapons/n1_cannon.wav"));
 					self.NextBlast = self.NextBlast + 1;
 					if(self.NextBlast == 15) then
@@ -269,7 +269,7 @@ if CLIENT then
 
 	ENT.EnginePos = {}
 	ENT.Sounds={
-		//Engine=Sound("ambient/atmosphere/ambience_base.wav"),
+		--Engine=Sound("ambient/atmosphere/ambience_base.wav"),
 		Engine=Sound("vehicles/laat/laat_fly2.wav"),
 	}
 	ENT.CanFPV = false;
@@ -282,7 +282,7 @@ if CLIENT then
 		end
 	end)
 	
-	//"ambient/atmosphere/ambience_base.wav"
+	--"ambient/atmosphere/ambience_base.wav"
 	local View = {}
     function ImpDropShipCalcView()
        
@@ -294,14 +294,14 @@ if CLIENT then
         local flying = p:GetNWBool("FlyingImpDropShip");
         if(flying) then
             if(IsValid(self)) then
-				local fpvPos = self:GetPos(); // This is the position of the first person view if you have it
-				return SWVehicleView(self,1000,200,fpvPos);      // 700 is distance from vehicle, 200 is the height.
+				local fpvPos = self:GetPos(); -- This is the position of the first person view if you have it
+				return SWVehicleView(self,1000,200,fpvPos);      -- 700 is distance from vehicle, 200 is the height.
             end
 		else
             if(IsValid(pass)) then
                 if(ImpDropShipSeat:GetThirdPersonMode()) then
                     local pos = self:GetPos()+LocalPlayer():GetAimVector():GetNormal()*-500+self:GetUp()*50;
-                    //local face = self:GetAngles() + Angle(0,-90,0);
+                    --local face = self:GetAngles() + Angle(0,-90,0);
                     local face = ((self:GetPos() + Vector(0,0,100))- pos):Angle();
                         View.origin = pos;
                         View.angles = face;
@@ -339,18 +339,18 @@ function ENT:Think()
 	local p = LocalPlayer();
 	local Flying = self:GetNWBool("Flying"..self.Vehicle);
 	if(Flying) then
-		self:Effects(); //Call the effects when the ship is flying.
+		self:Effects(); --Call the effects when the ship is flying.
 	end
 	self.BaseClass.Think(self);
 end
 
 function ENT:Effects()
-	local normal = (self:GetForward() * -1):GetNormalized() // More or less the direction. You can leave this for the most part (If it's going the opposite way, then change it 1 not -1)
-	local roll = math.Rand(-90,90) // Random roll so the effect isn't completely static (Useful for heatwave type)
-	local p = LocalPlayer()	// Player (duh)
-	local id = self:EntIndex(); //Need this later on.
+	local normal = (self:GetForward() * -1):GetNormalized() -- More or less the direction. You can leave this for the most part (If it's going the opposite way, then change it 1 not -1)
+	local roll = math.Rand(-90,90) -- Random roll so the effect isn't completely static (Useful for heatwave type)
+	local p = LocalPlayer()	-- Player (duh)
+	local id = self:EntIndex(); --Need this later on.
 	
-	//Get the engine pos the same way you get weapon pos
+	--Get the engine pos the same way you get weapon pos
 	self.EnginePos1 = {
 		self:GetPos()+self:GetForward()*-225+self:GetUp()*127.8+self:GetRight()*.6,
 	}
@@ -367,26 +367,26 @@ function ENT:Effects()
 		if(k > 1) then
 			size = 18;
 		end		
-		local red = self.FXEmitter:Add("sprites/orangecore1",v) // This is where you add the effect. The ones I use are either the current or "sprites/bluecore"
-		red:SetVelocity(normal*-80) //Set direction we made earlier
-		//red:SetDieTime(0.04) //How quick the particle dies. Make it larger if you want the effect to hang around
+		local red = self.FXEmitter:Add("sprites/orangecore1",v) -- This is where you add the effect. The ones I use are either the current or "sprites/bluecore"
+		red:SetVelocity(normal*-80) --Set direction we made earlier
+		--red:SetDieTime(0.04) --How quick the particle dies. Make it larger if you want the effect to hang around
 		red:SetDieTime(FrameTime()*1.5)
-		red:SetStartAlpha(255) // Self explanitory. How visible it is.
-		red:SetEndAlpha(100) // How visible it is at the end
-		red:SetStartSize(size) // Start size. Just play around to find the right size.
-		red:SetEndSize(size*0.75) // End size
-		red:SetRoll(roll) // They see me rollin. (They hatin')
-		red:SetColor(255,255,255) // Set the colour in RGB. This is more of an overlay colour effect and doesn't change the material source.
+		red:SetStartAlpha(255) -- Self explanitory. How visible it is.
+		red:SetEndAlpha(100) -- How visible it is at the end
+		red:SetStartSize(size) -- Start size. Just play around to find the right size.
+		red:SetEndSize(size*0.75) -- End size
+		red:SetRoll(roll) -- They see me rollin. (They hatin')
+		red:SetColor(255,255,255) -- Set the colour in RGB. This is more of an overlay colour effect and doesn't change the material source.
 
-		local dynlight = DynamicLight(id + 4096 * k); // Create the "glow"
-		dynlight.Pos = v; // Position from the table
- 		dynlight.Brightness = 4; // Brightness, Don't go above 10. It's blinding
-		dynlight.Size = 100; // How far it reaches
-		dynlight.Decay = 1024; // Not really sure what this does, but I leave it in
-		dynlight.R = 255; // Colour R
-		dynlight.G = 255; // Colour G
-		dynlight.B = 255; // Colour B
-		dynlight.DieTime = CurTime()+1; // When the light should die
+		local dynlight = DynamicLight(id + 4096 * k); -- Create the "glow"
+		dynlight.Pos = v; -- Position from the table
+ 		dynlight.Brightness = 4; -- Brightness, Don't go above 10. It's blinding
+		dynlight.Size = 100; -- How far it reaches
+		dynlight.Decay = 1024; -- Not really sure what this does, but I leave it in
+		dynlight.R = 255; -- Colour R
+		dynlight.G = 255; -- Colour G
+		dynlight.B = 255; -- Colour B
+		dynlight.DieTime = CurTime()+1; -- When the light should die
 
 	end
 
@@ -395,26 +395,26 @@ function ENT:Effects()
 		if(k > 4) then
 			size = 4;
 		end	
-		local red = self.FXEmitter:Add("sprites/orangecore1",v) // This is where you add the effect. The ones I use are either the current or "sprites/bluecore"
-		red:SetVelocity(normal) //Set direction we made earlier
-		//red:SetDieTime(0.05) //How quick the particle dies. Make it larger if you want the effect to hang around
+		local red = self.FXEmitter:Add("sprites/orangecore1",v) -- This is where you add the effect. The ones I use are either the current or "sprites/bluecore"
+		red:SetVelocity(normal) --Set direction we made earlier
+		--red:SetDieTime(0.05) --How quick the particle dies. Make it larger if you want the effect to hang around
 		red:SetDieTime(FrameTime()*1.5)
-		red:SetStartAlpha(255) // Self explanitory. How visible it is.
-		red:SetEndAlpha(100) // How visible it is at the end
-		red:SetStartSize(size) // Start size. Just play around to find the right size.
-		red:SetEndSize(size*0.75) // End size
-		red:SetRoll(roll) // They see me rollin. (They hatin')
-		red:SetColor(255,255,255) // Set the colour in RGB. This is more of an overlay colour effect and doesn't change the material source.
+		red:SetStartAlpha(255) -- Self explanitory. How visible it is.
+		red:SetEndAlpha(100) -- How visible it is at the end
+		red:SetStartSize(size) -- Start size. Just play around to find the right size.
+		red:SetEndSize(size*0.75) -- End size
+		red:SetRoll(roll) -- They see me rollin. (They hatin')
+		red:SetColor(255,255,255) -- Set the colour in RGB. This is more of an overlay colour effect and doesn't change the material source.
 
-		local dynlight = DynamicLight(id + 4096 * k); // Create the "glow"
-		dynlight.Pos = v; // Position from the table
- 		dynlight.Brightness = 4; // Brightness, Don't go above 10. It's blinding
-		dynlight.Size = 50; // How far it reaches
-		dynlight.Decay = 1024; // Not really sure what this does, but I leave it in
-		dynlight.R = 255; // Colour R
-		dynlight.G = 255; // Colour G
-		dynlight.B = 255; // Colour B
-		dynlight.DieTime = CurTime()+1; // When the light should die
+		local dynlight = DynamicLight(id + 4096 * k); -- Create the "glow"
+		dynlight.Pos = v; -- Position from the table
+ 		dynlight.Brightness = 4; -- Brightness, Don't go above 10. It's blinding
+		dynlight.Size = 50; -- How far it reaches
+		dynlight.Decay = 1024; -- Not really sure what this does, but I leave it in
+		dynlight.R = 255; -- Colour R
+		dynlight.G = 255; -- Colour G
+		dynlight.B = 255; -- Colour B
+		dynlight.DieTime = CurTime()+1; -- When the light should die
 
 	end
 end

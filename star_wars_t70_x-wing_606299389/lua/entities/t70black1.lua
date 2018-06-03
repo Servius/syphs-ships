@@ -5,25 +5,25 @@ ENT.Type = "vehicle";
 ENT.PrintName = "T70 X-Wing Black-One";
 ENT.Author = "Liam0102, Syphadias";
  
-ENT.Category = "Star Wars Vehicles: Rebels"; // Change "Your Category" to what category you want it to be under in the SWV tab
+ENT.Category = "Star Wars Vehicles: Rebels"; -- Change "Your Category" to what category you want it to be under in the SWV tab
 ENT.AutomaticFrameAdvance = true;
 ENT.Spawnable = true;
-ENT.AdminOnly = true; //Set to true for an Admin vehicle.
+ENT.AdminOnly = true; --Set to true for an Admin vehicle.
  
-ENT.EntModel = "models/starwars/syphadias/ships/t70_xwing/t70_black1_landed.mdl"  //The path to the model you want to use.
-ENT.Vehicle = "T70BlackOne" //The internal name for the ship. It cannot be the same as a different ship.
-ENT.StartHealth = 2250; //How much health they should have.
-ENT.Allegiance = "Resistance"; // Options are "Republic", "Rebels", "CIS", "Empire" and "Neutral". Anything else will be treated as Neutral.
+ENT.EntModel = "models/starwars/syphadias/ships/t70_xwing/t70_black1_landed.mdl"  --The path to the model you want to use.
+ENT.Vehicle = "T70BlackOne" --The internal name for the ship. It cannot be the same as a different ship.
+ENT.StartHealth = 2250; --How much health they should have.
+ENT.Allegiance = "Resistance"; -- Options are "Republic", "Rebels", "CIS", "Empire" and "Neutral". Anything else will be treated as Neutral.
 
 ENT.WingsModel = "models/starwars/syphadias/ships/t70_xwing/t70_black1_open.mdl"
 ENT.ClosedModel = "models/starwars/syphadias/ships/t70_xwing/t70_black1_closed.mdl"
 
-list.Set("SWVehicles", ENT.PrintName, ENT); // This is very important and is needed to add your vehicle to the Star Wars Vehicles tab 
+list.Set("SWVehicles", ENT.PrintName, ENT); -- This is very important and is needed to add your vehicle to the Star Wars Vehicles tab 
  
 if SERVER then
  
-ENT.FireSound = Sound("weapons/xwing_shoot.wav"); // The sound to make when firing the weapons. You do not need the sounds folder at the start
-ENT.NextUse = {Wings = CurTime(),Use = CurTime(),Fire = CurTime(),}; //Leave this alone for the most part.
+ENT.FireSound = Sound("weapons/xwing_shoot.wav"); -- The sound to make when firing the weapons. You do not need the sounds folder at the start
+ENT.NextUse = {Wings = CurTime(),Use = CurTime(),Fire = CurTime(),}; --Leave this alone for the most part.
 
 ENT.BBBodies = {
 	"models/prawnmodels/starwars/bb-8/body",
@@ -42,7 +42,7 @@ ENT.BBHeads = {
 AddCSLuaFile();
 function ENT:SpawnFunction(pl, tr, ClassName)
     local e = ents.Create(ClassName);
-	local spawn_height = 1; // How high above the ground the vehicle spawns. Change if it's spawning too high, or spawning in the ground.
+	local spawn_height = 1; -- How high above the ground the vehicle spawns. Change if it's spawning too high, or spawning in the ground.
 	
     e:SetPos(tr.HitPos + Vector(0,0,spawn_height));
     e:SetAngles(Angle(0,pl:GetAimVector():Angle().Yaw,0));
@@ -54,54 +54,54 @@ end
 function ENT:Initialize()
  
  
-    self:SetNWInt("Health",self.StartHealth); // Set the ship health, to the start health as made earlier
+    self:SetNWInt("Health",self.StartHealth); -- Set the ship health, to the start health as made earlier
    
-    //The locations of the weapons (Where we shoot out of), local to the ship. These largely just take a lot of tinkering.
+    --The locations of the weapons (Where we shoot out of), local to the ship. These largely just take a lot of tinkering.
     self.WeaponLocations = {
         Right = self:GetPos() + self:GetForward() * 62 + self:GetRight() * 234.1 + self:GetUp() * -11.4,
         TopRight = self:GetPos() + self:GetForward() * 62 + self:GetRight() * 234.4 + self:GetUp() * 154,
         TopLeft = self:GetPos() + self:GetForward() * 62 + self:GetRight() * -234.4 + self:GetUp() * 154,
         Left = self:GetPos() + self:GetForward() * 62 + self:GetRight() * -234.1 + self:GetUp() * -11.4,
     }
-    self.WeaponsTable = {}; // IGNORE. Needed to give players their weapons back
-    self.BoostSpeed = 2000; // The speed we go when holding SHIFT
-    self.ForwardSpeed = 2800; // The forward speed 
-    self.UpSpeed = 750; // Up/Down Speed
-    self.AccelSpeed = 12; // How fast we get to our previously set speeds
+    self.WeaponsTable = {}; -- IGNORE. Needed to give players their weapons back
+    self.BoostSpeed = 2000; -- The speed we go when holding SHIFT
+    self.ForwardSpeed = 2800; -- The forward speed 
+    self.UpSpeed = 750; -- Up/Down Speed
+    self.AccelSpeed = 12; -- How fast we get to our previously set speeds
 	
-	self.HasLookaround = true; //Set to true if the ship has 3D cockpit you want the player to be able to lookaround
+	self.HasLookaround = true; --Set to true if the ship has 3D cockpit you want the player to be able to lookaround
 	self.HasWings = true;
 	
-	self.CanBack = false; // Can we move backwards? Set to true if you want this.
-	self.CanRoll = true; // Set to true if you want the ship to roll, false if not
-	self.CanStrafe = false; // Set to true if you want the ship to strafe, false if not. You cannot have roll and strafe at the same time
-	self.CanStandby = false; // Set to true if you want the ship to hover when not inflight
+	self.CanBack = false; -- Can we move backwards? Set to true if you want this.
+	self.CanRoll = true; -- Set to true if you want the ship to roll, false if not
+	self.CanStrafe = false; -- Set to true if you want the ship to strafe, false if not. You cannot have roll and strafe at the same time
+	self.CanStandby = false; -- Set to true if you want the ship to hover when not inflight
 	
-	self.CanShoot = false; // Set to true if you want the ship to be able to shoot, false if not
-	self.AlternateFire = true // Set this to true if you want weapons to fire in sequence (You'll need to set the firegroups below)
-	self.FireGroup = {"Left","Right","TopRight","TopLeft"} // In this example, the weapon positions set above will fire with Left and TopLeft at the same time. And Right and TopRight at the same time.
-	self.OverheatAmount = 50 //The amount a ship can fire consecutively without overheating. 50 is standard.
-	self.DontOverheat = false; // Set this to true if you don't want the weapons to ever overheat. Mostly only appropriate on Admin vehicles.
-	self.MaxIonShots = 20; // The amount of Ion shots a vehicle can take before being disabled. 20 is the default.
+	self.CanShoot = false; -- Set to true if you want the ship to be able to shoot, false if not
+	self.AlternateFire = true -- Set this to true if you want weapons to fire in sequence (You'll need to set the firegroups below)
+	self.FireGroup = {"Left","Right","TopRight","TopLeft"} -- In this example, the weapon positions set above will fire with Left and TopLeft at the same time. And Right and TopRight at the same time.
+	self.OverheatAmount = 50 --The amount a ship can fire consecutively without overheating. 50 is standard.
+	self.DontOverheat = false; -- Set this to true if you don't want the weapons to ever overheat. Mostly only appropriate on Admin vehicles.
+	self.MaxIonShots = 20; -- The amount of Ion shots a vehicle can take before being disabled. 20 is the default.
 	self.FireDelay = 0.15;
-    self.Bullet = CreateBulletStructure(85,"red",false); // The first number is bullet damage, the second colour. green and red are the only options. (Set to blue for ion shot, the damage will be halved but ships will be disabled after consecutive hits). The final one is for splash damage. Set to true if you don't want splashdamage.
+    self.Bullet = CreateBulletStructure(85,"red",false); -- The first number is bullet damage, the second colour. green and red are the only options. (Set to blue for ion shot, the damage will be halved but ships will be disabled after consecutive hits). The final one is for splash damage. Set to true if you don't want splashdamage.
 	self.NextBlast = 1;	
 	
-	self.PilotVisible = true; // Set to true if you want a visible version of the pilot sat in the vehicle. Useful for ships with a glass cockpit.
-	self.PilotPosition = {x=0,y=2.5,z=75} // If the above is true, set the position here.
-	self.PilotAnim = "sit_rollercoaster"; //Set this to the animation you want. Common ones are: "drive_jeep", "drive_airboat" and "sit_rollercoaster". If you remove this it will default to "sit_rollercoaster"
+	self.PilotVisible = true; -- Set to true if you want a visible version of the pilot sat in the vehicle. Useful for ships with a glass cockpit.
+	self.PilotPosition = {x=0,y=2.5,z=75} -- If the above is true, set the position here.
+	self.PilotAnim = "sit_rollercoaster"; --Set this to the animation you want. Common ones are: "drive_jeep", "drive_airboat" and "sit_rollercoaster". If you remove this it will default to "sit_rollercoaster"
 	self.PilotAngle = Angle(-20,0,0);
 	
-	self.LandOffset = Vector(0,0,4); // Change the last 0 if you're vehicle is having trouble landing properly. (Make it larger)
-	self.ExitModifier = {x=-63,y=2.5,z=0}; // Change the position that you get out of the vehicle
+	self.LandOffset = Vector(0,0,4); -- Change the last 0 if you're vehicle is having trouble landing properly. (Make it larger)
+	self.ExitModifier = {x=-63,y=2.5,z=0}; -- Change the position that you get out of the vehicle
 
-	//self:TestLoc(self:GetPos() + self:GetForward() * 62 + self:GetRight() * 235.3 + self:GetUp() * -6.2
+	--self:TestLoc(self:GetPos() + self:GetForward() * 62 + self:GetRight() * 235.3 + self:GetUp() * -6.2
 
-	//BB8 Code
+	--BB8 Code
 	self:SpawnBB8(self:GetPos()+self:GetForward()*-86+self:GetRight()*0+self:GetUp()*85);	
-	//self.BB8ColorIndex = self:SetBB8Color();
+	--self.BB8ColorIndex = self:SetBB8Color();
 	
-    self.BaseClass.Initialize(self); // Ignore, needed to work
+    self.BaseClass.Initialize(self); -- Ignore, needed to work
 end
 
 function ENT:Enter(p)
@@ -188,14 +188,14 @@ end
 function ENT:Think()
 
     if(self.Inflight) then
-        //self.AccelSpeed = math.Approach(self.AccelSpeed,7,0.1);
+        --self.AccelSpeed = math.Approach(self.AccelSpeed,7,0.1);
         if(IsValid(self.Pilot)) then
             if(IsValid(self.Pilot)) then 
                 if(self.Pilot:KeyDown(IN_ATTACK2) and self.NextUse.FireBlast < CurTime()) then
                     self.BlastPositions = {
                         self:GetPos() + self:GetForward() * 60 + self:GetRight() * -75 + self:GetUp() * 60,
 						self:GetPos() + self:GetForward() * 60 + self:GetRight() * 75 + self:GetUp() * 60,
-                    } //Table of the positions from which to fire
+                    } --Table of the positions from which to fire
                     self:FireT70BlackOneBlast(self.BlastPositions[self.NextBlast], false, 100, 100, false, 20, Sound("weapons/n1_cannon.wav"));
 					self.NextBlast = self.NextBlast + 1;
 					if(self.NextBlast == 3) then
@@ -245,11 +245,11 @@ if CLIENT then
 		Engine=Sound("vehicles/t70_xwing/t70_engine_loop.wav"),
 	}
 	
-	//Vehicle View Variables
-	ENT.CanFPV = true; // Set to true if you want FPV
-    ENT.ViewDistance = 700; //Distance from the Ship
-    ENT.ViewHeight = 200; //Height above the ship 300
-    ENT.FPVPos = Vector(2,0,105); //Position relative to ship for first person view
+	--Vehicle View Variables
+	ENT.CanFPV = true; -- Set to true if you want FPV
+    ENT.ViewDistance = 700; --Distance from the Ship
+    ENT.ViewHeight = 200; --Height above the ship 300
+    ENT.FPVPos = Vector(2,0,105); --Position relative to ship for first person view
 	
 	function ENT:FlightEffects()
 
@@ -364,10 +364,10 @@ if CLIENT then
 	local function T70BlackOneReticle()
 		
 		local p = LocalPlayer();
-		local Flying = p:GetNWBool("FlyingT70BlackOne"); // T70BlackOne should be what you named your ship near the top
+		local Flying = p:GetNWBool("FlyingT70BlackOne"); -- T70BlackOne should be what you named your ship near the top
 		local self = p:GetNWEntity("T70BlackOne");
 		if(Flying and IsValid(self)) then
-			SW_HUD_DrawHull(2250); // Replace 1000 with the starthealth at the top
+			SW_HUD_DrawHull(2250); -- Replace 1000 with the starthealth at the top
 			SW_WeaponReticles(self);
 			SW_BlastIcon(self,6);
 			SW_HUD_DrawOverheating(self);
@@ -376,10 +376,10 @@ if CLIENT then
 			local x,y = SW_XYIn3D(pos);
 			
 			SW_HUD_Compass(self,x,y);
-			SW_HUD_DrawSpeedometer(); // Draw the speedometer
+			SW_HUD_DrawSpeedometer(); -- Draw the speedometer
 		end
 	end
-    hook.Add("HUDPaint", "T70BlackOneReticle", T70BlackOneReticle) // Here you need to make the middle argument something unique again. I've set it as what the function is called. Could be anything. And the final arguement should be the function just made.
+    hook.Add("HUDPaint", "T70BlackOneReticle", T70BlackOneReticle) -- Here you need to make the middle argument something unique again. I've set it as what the function is called. Could be anything. And the final arguement should be the function just made.
  
 end
  

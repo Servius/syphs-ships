@@ -1,39 +1,39 @@
-//HOW TO PROPERLY MAKE AN ADDITIONAL SHIP ADDON OFF OF MINE.
+--HOW TO PROPERLY MAKE AN ADDITIONAL SHIP ADDON OFF OF MINE.
  
-//Do not copy everything out of my addon. You don't need it. Shall explain later.
+--Do not copy everything out of my addon. You don't need it. Shall explain later.
  
-//Leave this stuff the same
+--Leave this stuff the same
 ENT.RenderGroup = RENDERGROUP_BOTH
 ENT.Base = "fighter_base";
 ENT.Type = "vehicle";
  
-//Edit appropriatly. I'd prefer it if you left my name (Since I made the base, and this template)
+--Edit appropriatly. I'd prefer it if you left my name (Since I made the base, and this template)
 ENT.PrintName = "Quadjumper";
 ENT.Author = "Liam0102";
  
-// Leave the same
-ENT.Category = "Star Wars Vehicles: Other"; // Techincally you could change this, but personally I'd leave it so they're all in the same place (Looks more proffesional).
+-- Leave the same
+ENT.Category = "Star Wars Vehicles: Other"; -- Techincally you could change this, but personally I'd leave it so they're all in the same place (Looks more proffesional).
 ENT.AutomaticFrameAdvance = true;
 ENT.Spawnable = false;
 ENT.AdminSpawnable = false;
-ENT.AdminOnly = false; //Set to true for an Admin vehicle.
+ENT.AdminOnly = false; --Set to true for an Admin vehicle.
  
-ENT.EntModel = "models/starwars/lordtrilobite/ships/quadjumper/quadjumper.mdl"; //The oath to the model you want to use.
-ENT.Vehicle = "Quadjumper" //The internal name for the ship. It cannot be the same as a different ship.
-ENT.StartHealth = 4500; //How much health they should have.
-ENT.Allegiance = "Neutral"; // Options are "Republic", "Rebels", "CIS", "Empire" and "Neutral"
+ENT.EntModel = "models/starwars/lordtrilobite/ships/quadjumper/quadjumper.mdl"; --The oath to the model you want to use.
+ENT.Vehicle = "Quadjumper" --The internal name for the ship. It cannot be the same as a different ship.
+ENT.StartHealth = 4500; --How much health they should have.
+ENT.Allegiance = "Neutral"; -- Options are "Republic", "Rebels", "CIS", "Empire" and "Neutral"
 list.Set("SWVehicles", ENT.PrintName, ENT);
     
 if SERVER then
  
-ENT.FireSound = Sound("weapons/template_shoot.wav"); // The sound to make when firing the weapons. You do not need the sounds folder at the start
-ENT.NextUse = {Wings = CurTime(),Use = CurTime(),Fire = CurTime(),}; //Leave this alone for the most part.
+ENT.FireSound = Sound("weapons/template_shoot.wav"); -- The sound to make when firing the weapons. You do not need the sounds folder at the start
+ENT.NextUse = {Wings = CurTime(),Use = CurTime(),Fire = CurTime(),}; --Leave this alone for the most part.
 
  
 AddCSLuaFile();
 function ENT:SpawnFunction(pl, tr)
-    local e = ents.Create("quadjumper"); // This should be the same name as the file
-	local spawn_height = 15; // How high above the ground the vehicle spawns. Change if it's spawning too high, or spawning in the ground.
+    local e = ents.Create("quadjumper"); -- This should be the same name as the file
+	local spawn_height = 15; -- How high above the ground the vehicle spawns. Change if it's spawning too high, or spawning in the ground.
 	
     e:SetPos(tr.HitPos + Vector(0,0,spawn_height));
     e:SetAngles(Angle(0,pl:GetAimVector():Angle().Yaw,0));
@@ -45,22 +45,22 @@ end
 function ENT:Initialize()
  
  
-    self:SetNWInt("Health",self.StartHealth); // Set the ship health, to the start health as made earlier
+    self:SetNWInt("Health",self.StartHealth); -- Set the ship health, to the start health as made earlier
    
-    //The locations of the weapons (Where we shoot out of), local to the ship. These largely just take a lot of tinkering.
+    --The locations of the weapons (Where we shoot out of), local to the ship. These largely just take a lot of tinkering.
     self.WeaponLocations = {
         Right = self:GetPos() + self:GetForward() * -30 + self:GetRight() * 432 + self:GetUp() * -17.25,
         TopRight = self:GetPos() + self:GetForward() * -30 + self:GetRight() * 432 + self:GetUp() * -17.25,
         TopLeft = self:GetPos() + self:GetForward() * -30 + self:GetRight() * -432 + self:GetUp() * -17.25,
         Left = self:GetPos() + self:GetForward() * -30 + self:GetRight() * -432 + self:GetUp() * -17.25,
     }
-    self.WeaponsTable = {}; // IGNORE. Needed to give players their weapons back
-    self.BoostSpeed = 2250; // The speed we go when holding SHIFT
-    self.ForwardSpeed = 1500; // The forward speed 
-    self.UpSpeed = 850; // Up/Down Speed
-    self.AccelSpeed = 8; // How fast we get to our previously set speeds
-    self.CanBack = true; // Can we move backwards? Set to true if you want this.
-	self.CanStrafe = true; // Set to true if you want the ship to strafe, false if not. You cannot have roll and strafe at the same time
+    self.WeaponsTable = {}; -- IGNORE. Needed to give players their weapons back
+    self.BoostSpeed = 2250; -- The speed we go when holding SHIFT
+    self.ForwardSpeed = 1500; -- The forward speed 
+    self.UpSpeed = 850; -- Up/Down Speed
+    self.AccelSpeed = 8; -- How fast we get to our previously set speeds
+    self.CanBack = true; -- Can we move backwards? Set to true if you want this.
+	self.CanStrafe = true; -- Set to true if you want the ship to strafe, false if not. You cannot have roll and strafe at the same time
 	self.GearOpen = true;
 	
 	self.ExitModifier = {x=0;y=-300,z=10}
@@ -75,7 +75,7 @@ function ENT:Initialize()
 	self:SpawnSeats();
 	self.PilotVisible = true;
 	self.PilotPosition = {x=0,y=200,z=220}
-    self.BaseClass.Initialize(self); // Ignore, needed to work
+    self.BaseClass.Initialize(self); -- Ignore, needed to work
 end
 
 function ENT:Tractor()
@@ -293,7 +293,7 @@ end
  
 if CLIENT then
 
-	ENT.CanFPV = true; // Set to true if you want FPV
+	ENT.CanFPV = true; -- Set to true if you want FPV
     ENT.EnginePos = {}
     ENT.Sounds={
 		Engine=Sound("vehicles/mf/mf_fly5.wav"),
@@ -382,8 +382,8 @@ if CLIENT then
 		
 			local pos = self:GetPos()+self:GetUp()*227.5+self:GetForward()*230
 			local x,y = SW_XYIn3D(pos)
-			SW_HUD_Compass(self,x,y); // Draw the compass/radar
-			SW_HUD_DrawSpeedometer(); // Draw the speedometer
+			SW_HUD_Compass(self,x,y); -- Draw the compass/radar
+			SW_HUD_DrawSpeedometer(); -- Draw the speedometer
 		end
 	end
     hook.Add("HUDPaint", "QuadjumperReticle", QuadjumperReticle);

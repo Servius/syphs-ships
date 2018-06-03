@@ -69,7 +69,7 @@ function ENT:Initialize()
 	
 	self.LandOffset = Vector(0,0,1500);
 	self.LandDistance = 1000;
-	//self.LandTracePos = self:GetPos()+self:GetUp()*-2000;
+	--self.LandTracePos = self:GetPos()+self:GetUp()*-2000;
 
 	self.ExitModifier = {x=0,y=-325,z=-1200};
 	
@@ -135,7 +135,7 @@ function ENT:PunchingIt(Dest)
 				self:EmitSound(self.HyperDriveSound,100);
 				self.PlayedSound = true;
 			end
-			//util.ScreenShake(self:GetPos()+self:GetForward()*-730+self:GetUp()*195+self:GetRight()*3,5,5,10,5000)
+			--util.ScreenShake(self:GetPos()+self:GetForward()*-730+self:GetUp()*195+self:GetRight()*3,5,5,10,5000)
 		else
 			self.Accel.FWD = 4000;
 			self.LightSpeedWarp = CurTime()+0.5;
@@ -276,9 +276,9 @@ if CLIENT then
 		local Flying = p:GetNWBool("FlyingMedFrig");
 		local self = p:GetNWEntity("MedFrig");
 		if(Flying and IsValid(self)) then
-			SW_HUD_DrawHull(8000); // Replace 1000 with the starthealth at the top
-			//SW_WeaponReticles(self);
-			//SW_HUD_DrawOverheating(self);
+			SW_HUD_DrawHull(8000); -- Replace 1000 with the starthealth at the top
+			--SW_WeaponReticles(self);
+			--SW_HUD_DrawOverheating(self);
 			SW_HUD_Compass(self);
 			SW_HUD_DrawSpeedometer();
 		end

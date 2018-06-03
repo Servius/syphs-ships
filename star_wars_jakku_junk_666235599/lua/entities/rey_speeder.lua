@@ -9,8 +9,8 @@ ENT.AutomaticFrameAdvance = true
 ENT.Spawnable = false;
 ENT.AdminSpawnable = false;
 
-ENT.Vehicle = "ReySpeeder"; // The unique name for the speeder.
-ENT.EntModel = "models/starwars/lordtrilobite/ships/reys_speeder/reys_speeder.mdl"; // The path to your model
+ENT.Vehicle = "ReySpeeder"; -- The unique name for the speeder.
+ENT.EntModel = "models/starwars/lordtrilobite/ships/reys_speeder/reys_speeder.mdl"; -- The path to your model
 list.Set("SWVehicles", ENT.PrintName, ENT);
 
 ENT.StartHealth = 1000;
@@ -206,8 +206,8 @@ if CLIENT then
 			if(IsValid(DriverSeat)) then
 				if(DriverSeat:GetThirdPersonMode()) then
 					local pos = self:GetPos()+LocalPlayer():GetAimVector():GetNormal()*-250+self:GetUp()*100;
-					//local pos = self:GetPos()+self:GetRight()*250+self:GetUp()*100;
-					//local face = self:GetAngles() + Angle(0,-90,0);
+					--local pos = self:GetPos()+self:GetRight()*250+self:GetUp()*100;
+					--local face = self:GetAngles() + Angle(0,-90,0);
 					local face = ((self:GetPos() + Vector(0,0,100))- pos):Angle();
 						View.origin = pos;
 						View.angles = face;

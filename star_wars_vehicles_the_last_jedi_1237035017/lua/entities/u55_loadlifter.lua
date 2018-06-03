@@ -55,22 +55,22 @@ function ENT:Initialize()
 	self.Bullet = CreateBulletStructure(70,"green");
 	
 	self.SeatPos = {
-		//Glass Front LR
+		--Glass Front LR
 		{self:GetPos()+self:GetUp()*45+self:GetRight()*-100+self:GetForward()*210, self:GetAngles()+Angle(0,0,0)},
 		{self:GetPos()+self:GetUp()*45+self:GetRight()*100+self:GetForward()*210, self:GetAngles()+Angle(0,-180,0)},
-		//Glass Middle LR
+		--Glass Middle LR
 		{self:GetPos()+self:GetUp()*45+self:GetRight()*-122+self:GetForward()*105, self:GetAngles()+Angle(0,0,0)},
 		{self:GetPos()+self:GetUp()*45+self:GetRight()*122+self:GetForward()*105, self:GetAngles()+Angle(0,-180,0)},
-		//Glass Back LR
+		--Glass Back LR
 		{self:GetPos()+self:GetUp()*45+self:GetRight()*-122+self:GetForward()*5, self:GetAngles()+Angle(0,0,0)},
 		{self:GetPos()+self:GetUp()*45+self:GetRight()*122+self:GetForward()*5, self:GetAngles()+Angle(0,-180,0)},
-		//Front LR
+		--Front LR
 		{self:GetPos()+self:GetUp()*45+self:GetRight()*-75+self:GetForward()*160, self:GetAngles()+Angle(0,0,0)},
 		{self:GetPos()+self:GetUp()*45+self:GetRight()*75+self:GetForward()*160, self:GetAngles()+Angle(0,-180,0)},
-		//Back LR
+		--Back LR
 		{self:GetPos()+self:GetUp()*45+self:GetRight()*-75+self:GetForward()*55, self:GetAngles()+Angle(0,0,0)},
 		{self:GetPos()+self:GetUp()*45+self:GetRight()*75+self:GetForward()*55, self:GetAngles()+Angle(0,-180,0)},
-		//Face Front
+		--Face Front
 		{self:GetPos()+self:GetUp()*45+self:GetRight()*-60+self:GetForward()*230, self:GetAngles()+Angle(0,-90,0)},
 	};
 	
@@ -100,7 +100,7 @@ function ENT:SpawnSeats()
        e:SetVehicleClass("sypha_seat");
        e:SetUseType(USE_OFF);
        e:SetCollisionGroup(COLLISION_GROUP_IN_VEHICLE)
-       //e:GetPhysicsObject():EnableCollisions(false); //Makes Players Get Stuck in nocollided seats.
+       --e:GetPhysicsObject():EnableCollisions(false); --Makes Players Get Stuck in nocollided seats.
        e.IsU55LoadLifterSeat = true;
        e.U55LoadLifter = self;
  
@@ -148,9 +148,9 @@ hook.Add("PlayerLeaveVehicle", "U55LoadLifterSeatExit", function(p,v)
         if(v.IsU55LoadLifterSeat) then
             local e = v.U55LoadLifter;
             if(IsValid(e)) then
-                //p:SetPos(e:GetPos() + e:GetRight()*e.ExitModifier.x + e:GetForward() * e.ExitModifier.y + e:GetUp() * e.ExitModifier.z);
-                //p:SetPos(e:GetPos()+e:GetUp()*110)
-				//p:SetPos(v:GetPos()+v:GetUp()*10+v:GetRight()*0+v:GetForward()*0)
+                --p:SetPos(e:GetPos() + e:GetRight()*e.ExitModifier.x + e:GetForward() * e.ExitModifier.y + e:GetUp() * e.ExitModifier.z);
+                --p:SetPos(e:GetPos()+e:GetUp()*110)
+				--p:SetPos(v:GetPos()+v:GetUp()*10+v:GetRight()*0+v:GetForward()*0)
 				timer.Simple(0.1, function()
 					if IsValid(p) and IsValid(v) then
 						p:SetPos(v:GetPos()+v:GetUp()*10+v:GetRight()*0+v:GetForward()*0)
@@ -181,13 +181,13 @@ if CLIENT then
 
 	ENT.EnginePos = {}
 	ENT.Sounds={
-		//Engine=Sound("ambient/atmosphere/ambience_base.wav"),
+		--Engine=Sound("ambient/atmosphere/ambience_base.wav"),
 		Engine=Sound("vehicles/resistance_transport/lightcruiser_engine_loop.wav"),
 	}
-	ENT.CanFPV = true; // Set to true if you want FPV
-    ENT.ViewDistance = 1150; //Distance from the Ship
-    ENT.ViewHeight = 300; //Height above the ship 300
-    ENT.FPVPos = Vector(325,-92,120); //Position relative to ship for first person view
+	ENT.CanFPV = true; -- Set to true if you want FPV
+    ENT.ViewDistance = 1150; --Distance from the Ship
+    ENT.ViewHeight = 300; --Height above the ship 300
+    ENT.FPVPos = Vector(325,-92,120); --Position relative to ship for first person view
 
 	hook.Add("ScoreboardShow","U55LoadLifterScoreDisable", function()
 		local p = LocalPlayer();	
@@ -197,7 +197,7 @@ if CLIENT then
 		end
 	end)
 	
-	//"ambient/atmosphere/ambience_base.wav"
+	--"ambient/atmosphere/ambience_base.wav"
 	local View = {}
     function U55LoadLifterCalcView()
        
@@ -211,7 +211,7 @@ if CLIENT then
             if(IsValid(pass)) then
                 if(U55LoadLifterSeat:GetThirdPersonMode()) then
                     local pos = self:GetPos()+LocalPlayer():GetAimVector():GetNormal()*-500+self:GetUp()*50;
-                    //local face = self:GetAngles() + Angle(0,-90,0);
+                    --local face = self:GetAngles() + Angle(0,-90,0);
                     local face = ((self:GetPos() + Vector(0,0,100))- pos):Angle();
                         View.origin = pos;
                         View.angles = face;
@@ -249,18 +249,18 @@ function ENT:Think()
 	local p = LocalPlayer();
 	local Flying = self:GetNWBool("Flying"..self.Vehicle);
 	if(Flying) then
-		self:Effects(); //Call the effects when the ship is flying.
+		self:Effects(); --Call the effects when the ship is flying.
 	end
 	self.BaseClass.Think(self);
 end
 
 function ENT:Effects()
-	local normal = (self:GetForward() * -1):GetNormalized() // More or less the direction. You can leave this for the most part (If it's going the opposite way, then change it 1 not -1)
-	local roll = math.Rand(-90,90) // Random roll so the effect isn't completely static (Useful for heatwave type)
-	local p = LocalPlayer()	// Player (duh)
-	local id = self:EntIndex(); //Need this later on.
+	local normal = (self:GetForward() * -1):GetNormalized() -- More or less the direction. You can leave this for the most part (If it's going the opposite way, then change it 1 not -1)
+	local roll = math.Rand(-90,90) -- Random roll so the effect isn't completely static (Useful for heatwave type)
+	local p = LocalPlayer()	-- Player (duh)
+	local id = self:EntIndex(); --Need this later on.
 	
-	//Get the engine pos the same way you get weapon pos
+	--Get the engine pos the same way you get weapon pos
 	self.EnginePos1 = {
 		self:GetPos()+self:GetForward()*-570+self:GetUp()*142.5+self:GetRight()*0,
 		self:GetPos()+self:GetForward()*-570+self:GetUp()*142.5+self:GetRight()*20,
@@ -276,26 +276,26 @@ function ENT:Effects()
 	}
 	
 	for k,v in pairs(self.EnginePos1) do
-		local red = self.FXEmitter:Add("sprites/bluecore",v) // This is where you add the effect. The ones I use are either the current or "sprites/bluecore"
-		red:SetVelocity(normal*-80) //Set direction we made earlier
-		//red:SetDieTime(0.04) //How quick the particle dies. Make it larger if you want the effect to hang around
+		local red = self.FXEmitter:Add("sprites/bluecore",v) -- This is where you add the effect. The ones I use are either the current or "sprites/bluecore"
+		red:SetVelocity(normal*-80) --Set direction we made earlier
+		--red:SetDieTime(0.04) --How quick the particle dies. Make it larger if you want the effect to hang around
 		red:SetDieTime(FrameTime()*1.5)
-		red:SetStartAlpha(255) // Self explanitory. How visible it is.
-		red:SetEndAlpha(100) // How visible it is at the end
-		red:SetStartSize(40) // Start size. Just play around to find the right size.
-		red:SetEndSize(40) // End size
-		red:SetRoll(roll) // They see me rollin. (They hatin')
-		red:SetColor(255,255,255) // Set the colour in RGB. This is more of an overlay colour effect and doesn't change the material source.
+		red:SetStartAlpha(255) -- Self explanitory. How visible it is.
+		red:SetEndAlpha(100) -- How visible it is at the end
+		red:SetStartSize(40) -- Start size. Just play around to find the right size.
+		red:SetEndSize(40) -- End size
+		red:SetRoll(roll) -- They see me rollin. (They hatin')
+		red:SetColor(255,255,255) -- Set the colour in RGB. This is more of an overlay colour effect and doesn't change the material source.
 
-		local dynlight = DynamicLight(id + 4096 * k); // Create the "glow"
-		dynlight.Pos = v; // Position from the table
- 		dynlight.Brightness = 4; // Brightness, Don't go above 10. It's blinding
-		dynlight.Size = 100; // How far it reaches
-		dynlight.Decay = 1024; // Not really sure what this does, but I leave it in
-		dynlight.R = 255; // Colour R
-		dynlight.G = 255; // Colour G
-		dynlight.B = 255; // Colour B
-		dynlight.DieTime = CurTime()+1; // When the light should die
+		local dynlight = DynamicLight(id + 4096 * k); -- Create the "glow"
+		dynlight.Pos = v; -- Position from the table
+ 		dynlight.Brightness = 4; -- Brightness, Don't go above 10. It's blinding
+		dynlight.Size = 100; -- How far it reaches
+		dynlight.Decay = 1024; -- Not really sure what this does, but I leave it in
+		dynlight.R = 255; -- Colour R
+		dynlight.G = 255; -- Colour G
+		dynlight.B = 255; -- Colour B
+		dynlight.DieTime = CurTime()+1; -- When the light should die
 
 	end
 end

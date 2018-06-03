@@ -60,7 +60,7 @@ function ENT:Initialize()
 	
 	self.ExitModifier = {x=300,y=150,z=50};
 	
-	//self:TestLoc(self:GetPos() + self:GetForward() * -375 + self:GetRight() * -260.75 + self:GetUp() * 123)
+	--self:TestLoc(self:GetPos() + self:GetForward() * -375 + self:GetRight() * -260.75 + self:GetUp() * 123)
 	
 	self.BaseClass.Initialize(self);
 	self:SpawnLandingGear();
@@ -72,7 +72,7 @@ function ENT:Think()
 		if(IsValid(self.Pilot)) then
 			if(self.Pilot:KeyDown(IN_ATTACK2)) then
 				local pos = self:GetPos()+self:GetForward()*220+self:GetUp()*60;
-				//self:FireBlast(pos,false,8,600,false,20);
+				--self:FireBlast(pos,false,8,600,false,20);
 			end
 		end
 	end
@@ -224,7 +224,7 @@ if CLIENT then
 		local Flying = p:GetNWBool("FlyingNabRS");
 		local self = p:GetNWEntity("NabRS");
 		if(Flying and IsValid(self)) then
-			SW_HUD_DrawHull(4000); // Replace 1000 with the starthealth at the top
+			SW_HUD_DrawHull(4000); -- Replace 1000 with the starthealth at the top
 			SW_WeaponReticles(self);
 			SW_HUD_DrawOverheating(self);
 			SW_HUD_Compass(self);

@@ -70,7 +70,7 @@ function ENT:Initialize()
     self.OGUp = 600;
    
     self.ExitModifier = {x=0,y=-200,z=20};
-    //self:TestLoc(self:GetPos()+self:GetForward()*200+self:GetUp()*100);
+    --self:TestLoc(self:GetPos()+self:GetForward()*200+self:GetUp()*100);
     self.SeatPos = {
         {self:GetPos()+self:GetUp()*50,self:GetAngles()},
         {self:GetPos()+self:GetUp()*50+self:GetRight()*50,self:GetAngles()},
@@ -212,7 +212,7 @@ function ENT:PunchingIt(Dest)
                 self:EmitSound(self.HyperDriveSound,100);
                 self.PlayedSound = true;
             end
-            //util.ScreenShake(self:GetPos()+self:GetForward()*-730+self:GetUp()*195+self:GetRight()*3,5,5,10,5000)
+            --util.ScreenShake(self:GetPos()+self:GetForward()*-730+self:GetUp()*195+self:GetRight()*3,5,5,10,5000)
         else
             self.Accel.FWD = 4000;
             self.LightSpeedWarp = CurTime()+0.5;
@@ -284,12 +284,12 @@ if CLIENT then
     end
    
     function ENT:Effects()
-    local normal = (self:GetForward() * -1):GetNormalized() // More or less the direction. You can leave this for the most part (If it's going the opposite way, then change it 1 not -1)
-    local roll = math.Rand(-90,90) // Random roll so the effect isn't completely static (Useful for heatwave type)
-    local p = LocalPlayer() // Player (duh)
-    local id = self:EntIndex(); //Need this later on.
+    local normal = (self:GetForward() * -1):GetNormalized() -- More or less the direction. You can leave this for the most part (If it's going the opposite way, then change it 1 not -1)
+    local roll = math.Rand(-90,90) -- Random roll so the effect isn't completely static (Useful for heatwave type)
+    local p = LocalPlayer() -- Player (duh)
+    local id = self:EntIndex(); --Need this later on.
    
-    //Get the engine pos the same way you get weapon pos
+    --Get the engine pos the same way you get weapon pos
     self.EnginePos = {
         self:GetPos()+self:GetForward()*-970+self:GetUp()*160+self:GetRight()*-548,
         self:GetPos()+self:GetForward()*-1550+self:GetUp()*355+self:GetRight()*3,
@@ -298,25 +298,25 @@ if CLIENT then
    
     for k,v in pairs(self.EnginePos) do
        
-        local red = self.FXEmitter:Add("sprites/bluecore",v) // This is where you add the effect. The ones I use are either the current or "sprites/bluecore""sprites/orangecore1"
-        red:SetVelocity(normal) //Set direction we made earlier
-        red:SetDieTime(0.05) //How quick the particle dies. Make it larger if you want the effect to hang around
-        red:SetStartAlpha(255) // Self explanitory. How visible it is.
-        red:SetEndAlpha(100) // How visible it is at the end
-        //red:SetStartSize(175) // Start size. Just play around to find the right size.
-        red:SetEndSize(5) // End size
-        red:SetRoll(roll) // They see me rollin. (They hatin')
-        red:SetColor(0,200,255) // Set the colour in RGB. This is more of an overlay colour effect and doesn't change the material source.
+        local red = self.FXEmitter:Add("sprites/bluecore",v) -- This is where you add the effect. The ones I use are either the current or "sprites/bluecore""sprites/orangecore1"
+        red:SetVelocity(normal) --Set direction we made earlier
+        red:SetDieTime(0.05) --How quick the particle dies. Make it larger if you want the effect to hang around
+        red:SetStartAlpha(255) -- Self explanitory. How visible it is.
+        red:SetEndAlpha(100) -- How visible it is at the end
+        --red:SetStartSize(175) -- Start size. Just play around to find the right size.
+        red:SetEndSize(5) -- End size
+        red:SetRoll(roll) -- They see me rollin. (They hatin')
+        red:SetColor(0,200,255) -- Set the colour in RGB. This is more of an overlay colour effect and doesn't change the material source.
  
-        local dynlight = DynamicLight(id + 4096 * k); // Create the "glow"
-        dynlight.Pos = v; // Position from the table
-        dynlight.Brightness = 7; // Brightness, Don't go above 10. It's blinding
-        dynlight.Size = 100; // How far it reaches
-        dynlight.Decay = 1024; // Not really sure what this does, but I leave it in
-        dynlight.R = 0; // Colour R
-        dynlight.G = 200; // Colour G
-        dynlight.B = 255; // Colour B
-        dynlight.DieTime = CurTime()+1; // When the light should die
+        local dynlight = DynamicLight(id + 4096 * k); -- Create the "glow"
+        dynlight.Pos = v; -- Position from the table
+        dynlight.Brightness = 7; -- Brightness, Don't go above 10. It's blinding
+        dynlight.Size = 100; -- How far it reaches
+        dynlight.Decay = 1024; -- Not really sure what this does, but I leave it in
+        dynlight.R = 0; -- Colour R
+        dynlight.G = 200; -- Colour G
+        dynlight.B = 255; -- Colour B
+        dynlight.DieTime = CurTime()+1; -- When the light should die
  
         local size;
             if(k == 2)then
@@ -362,9 +362,9 @@ if CLIENT then
         local Flying = p:GetNWBool("FlyingGozanti");
         local self = p:GetNWEntity("Gozanti");
         if(Flying and IsValid(self)) then
-            SW_HUD_DrawHull(4000); // Replace 1000 with the starthealth at the top
-            //SW_WeaponReticles(self);
-            //SW_HUD_DrawOverheating(self);
+            SW_HUD_DrawHull(4000); -- Replace 1000 with the starthealth at the top
+            --SW_WeaponReticles(self);
+            --SW_HUD_DrawOverheating(self);
             SW_HUD_Compass(self);
             SW_HUD_DrawSpeedometer();
         end
