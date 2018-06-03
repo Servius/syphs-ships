@@ -4,9 +4,10 @@ ENT.Type = "vehicle"
 
 ENT.PrintName = "FOC Krayt Destroyer"
 ENT.Author = "Liam0102, Syphadias"
-ENT.Category = "Star Wars"
+ENT.Category = "Star Wars Vehicles: Other"
+list.Set("SWVehicles", ENT.PrintName, ENT);
 ENT.AutomaticFrameAdvance = true
-ENT.Spawnable = true;
+ENT.Spawnable = false;
 ENT.AdminSpawnable = false;
 ENT.AdminOnly = true;
 

@@ -4,9 +4,10 @@ ENT.Type = "vehicle"
 
 ENT.PrintName = "FOC Crusader Corvette"
 ENT.Author = "Liam0102, Syphadias"
-ENT.Category = "Star Wars"
+ENT.Category = "Star Wars Vehicles: Other"
+list.Set("SWVehicles", ENT.PrintName, ENT);
 ENT.AutomaticFrameAdvance = true
-ENT.Spawnable = true;
+ENT.Spawnable = false;
 ENT.AdminSpawnable = false;
 
 ENT.EntModel = "models/starwars/syphadias/ships/crusader_c_corv/crusader_c_corv.mdl"
